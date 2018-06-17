@@ -6,6 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 use Admin\Users\Models\Notes;
+use Admin\Media\Models\Media;
 
 class User extends Authenticatable
 {
@@ -49,18 +50,29 @@ class User extends Authenticatable
     public function getFnameAttribute()
     {
         $name = explode(" ", $this->name);
-        return array_shift($name);
+        $fName = array_shift($name);
+        
+        if(count($name) > 1 && str_is('*.', $fName))
+            $fName = $fName.' '.array_shift($name);
+        return $fName;
     }
     
     public function getLnameAttribute()
     {
-        $name = explode(" ", $this->name);
-        return array_pop($name);
+        $lName = str_replace($this->fname,'', $this->name);
+        return $lName;
     }
 
     public function Notes()
     {
         return $q = $this->hasMany(Notes::class);
+        dump($q->getBindings(), $q->toSql());
+        return $q;
+    }
+
+    public function Media()
+    {
+        return $q = $this->hasMany(Media::class);
         dump($q->getBindings(), $q->toSql());
         return $q;
     }

@@ -8,7 +8,7 @@ class Group extends Model
 {
     //
     protected $fillable = [
-        "name",
+        "label",
         'group_id',
         "permissions",
     ];

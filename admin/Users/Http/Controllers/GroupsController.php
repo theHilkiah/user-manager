@@ -1,13 +1,13 @@
 <?php
 
-namespace Admin\Media\Http\Controllers;
+namespace Admin\Users\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
-use Admin\Media\Models\Media;
+use App\Models\Auth\{User,Group};
 
-class MediaController extends Controller
+class GroupsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class MediaController extends Controller
      */
     public function index()
     {
-        $data['Media'] = Media::all();
-        return view('media::index', $data);
+        $data['Groups'] = Group::all();
+        return view('users::groups.index', $data);
     }
 
     /**
@@ -25,7 +25,7 @@ class MediaController extends Controller
      */
     public function create()
     {
-        return view('media::create');
+        return view('users::create');
     }
 
     /**
@@ -35,18 +35,8 @@ class MediaController extends Controller
      */
     public function store(Request $request)
     {
-        $uploader = $request->user()->id;
-        $request->merge(compact('uploader'));
-        $media = $request->file;
-        $name = $media->getClientOriginalName();
-        $uDir = 'users/'.$request->user_id; 
-        $path = storage_path($uDir.'/'.$name);
-               
-        $file = $media->storeAs($uDir, $name);
-        $data = $request->except('file');
-        $data = array_merge($data, compact('file'));
-        $New = Media::create($data);
-        dump($New->getAttributes());
+        $Group = Group::create($request->all());
+        return back();
     }
 
     /**
@@ -55,7 +45,7 @@ class MediaController extends Controller
      */
     public function show()
     {
-        return view('media::show');
+        return view('users::show');
     }
 
     /**
@@ -64,7 +54,7 @@ class MediaController extends Controller
      */
     public function edit()
     {
-        return view('media::edit');
+        return view('users::edit');
     }
 
     /**

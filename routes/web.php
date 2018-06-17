@@ -23,6 +23,7 @@ Route::group([
     Route::any('{page?}/{action?}', Auth\ManageController::class);
 });
 
+Route::get('/home', User\HomeController::class);
 // Route::group([ 
 //     'middleware' => ['web', 'admin', 'auth'],
 //     'namespace' => 'Modules\Admin\Http\Controllers'

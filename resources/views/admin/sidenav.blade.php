@@ -29,9 +29,9 @@ $activeLink = function($link, $class = 'active'){
 </h6>
 <ul class="nav flex-column mb-2">
   <li class="nav-item">
-    <a class="nav-link" href="#">
+    <a class="nav-link{{$activeLink($link = 'admin/media')}}" href="/{{ $link }}">
       <span data-feather="file-text"></span>
-      Module 1
+      Files
     </a>
   </li>
   <li class="nav-item">
@@ -64,7 +64,7 @@ $activeLink = function($link, $class = 'active'){
     </li>
   
   <li class="nav-item">
-    <a class="nav-link" href="#">
+    <a class="nav-link{{$activeLink($link = 'admin/groups')}}" href="/{{ $link }}">
       <span data-feather="file-text"></span>
       Groups
     </a>

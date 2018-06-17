@@ -5,20 +5,27 @@ namespace Admin\Users\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
-use App\Models\Auth\User;
+use App\Models\Auth\{User,Group};
 use Admin\Users\Models\Notes;
 
 class UsersController extends Controller
 {
+    protected $users, $groups, $permissions;
+
+    public function __construct()
+    {
+        $this->users = User::all();
+        $this->groups = Group::all();
+    }
     /**
      * Display a listing of the resource.
      * @return Response
      */
     public function index()
     {
-        $Users = User::all();
+        $Users = $this->users;
         $data = get_defined_vars();
-        return view('users::index', $data);
+        return view('users::users.index', $data);
     }
 
     /**
@@ -43,9 +50,19 @@ class UsersController extends Controller
      * Show the specified resource.
      * @return Response
      */
-    public function show()
+    public function show($show)
     {
-        return view('users::show');
+        switch ($show) {
+            case 'groups':
+                $view = 'show.groups';
+                $data['Groups'] = $this->groups;
+                break;
+            
+            default:
+                # code...
+                break;
+        }
+        return view('users::'.$view, $data);
     }
 
     /**
@@ -54,9 +71,10 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        $data['User'] = $User = User::find($id);
+        $data['Groups'] = $User = $this->groups;        
+        $data['User'] = $User = $this->users->find($id);
         $data['Notes'] = $User->notes ?? [];
-        return view('users::edit', $data);
+        return view('users::users.edit', $data);
     }
 
     /**
@@ -67,11 +85,14 @@ class UsersController extends Controller
     public function update(Request $request, $user_id)
     {
         $request->merge(compact('user_id'));
-        if($request->notes == 'yes'){
-            $author_id = $request->user()->id;  
-            $identity = compact('user_id', 'author_id');          
+        $author_id = $request->user()->id;  
+        $identity = compact('user_id', 'author_id');
+
+        if($request->notes == 'yes'){                      
             $Note = Notes::create($identity);
             $Note->fill($request->all())->save();
+        } elseif($request->login == 'yes'){
+            dump($request->all());
         }
         return back();
     }

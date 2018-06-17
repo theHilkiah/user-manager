@@ -1,6 +1,10 @@
 <?php
 
-Route::group(['middleware' => 'web', 'prefix' => 'media', 'namespace' => 'Admin\Media\Http\Controllers'], function()
+Route::group([
+    'prefix' => 'admin',
+    'middleware' => ['web', 'auth', 'admin'], 
+    'namespace' => 'Admin\Media\Http\Controllers'
+], function()
 {
-    Route::get('/', 'MediaController@index');
+    Route::resource('media', MediaController::class);
 });
