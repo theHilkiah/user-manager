@@ -5,6 +5,8 @@ namespace App\Models\Auth;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+use Admin\Users\Models\Notes;
+
 class User extends Authenticatable
 {
     use Notifiable;
@@ -18,6 +20,7 @@ class User extends Authenticatable
         "name",
         "group_id",
         "email",
+        "phone",
         "password",
         "temppass",
         "secure_code",
@@ -37,4 +40,28 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function getIsAdminAttribute()
+    {
+        return $this->group_id == 1;
+    }
+
+    public function getFnameAttribute()
+    {
+        $name = explode(" ", $this->name);
+        return array_shift($name);
+    }
+    
+    public function getLnameAttribute()
+    {
+        $name = explode(" ", $this->name);
+        return array_pop($name);
+    }
+
+    public function Notes()
+    {
+        return $q = $this->hasMany(Notes::class);
+        dump($q->getBindings(), $q->toSql());
+        return $q;
+    }
 }

@@ -15,6 +15,7 @@ mix.js('resources/assets/js/app.js', 'public/js')
    .sass('resources/assets/sass/app.scss', 'public/css');
 
 mix.js([
+     'modules/Admin/Resources/assets/js/init.js',
     'modules/Admin/Resources/assets/js/dashboard.js'
 ], 'public/js/admin.js')
 .styles([

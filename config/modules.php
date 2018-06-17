@@ -11,7 +11,7 @@ return [
     |
     */
 
-    'namespace' => 'Modules',
+    'namespace' => 'Admin',
 
     /*
     |--------------------------------------------------------------------------
@@ -67,7 +67,7 @@ return [
         |
         */
 
-        'modules' => base_path('modules'),
+        'modules' => base_path('admin'),
         /*
         |--------------------------------------------------------------------------
         | Modules assets path
@@ -77,7 +77,7 @@ return [
         |
         */
 
-        'assets' => public_path('modules'),
+        'assets' => public_path('admin'),
         /*
         |--------------------------------------------------------------------------
         | The migrations path
@@ -88,7 +88,7 @@ return [
         |
         */
 
-        'migration' => base_path('database/migrations/modules'),
+        'migration' => base_path('database/migrations/admin'),
         /*
         |--------------------------------------------------------------------------
         | Generator path
@@ -148,7 +148,7 @@ return [
     */
 
     'composer' => [
-        'vendor' => 'nwidart',
+        'vendor' => 'user-manager',
         'author' => [
             'name' => 'Hilkiah Makemo',
             'email' => 'hilmak01@gmail.com',

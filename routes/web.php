@@ -16,17 +16,16 @@ Route::get('/', function () {
 });
 
 //Auth::routes();
-Route::group(['prefix' => 'auth'], function(){
+Route::group([
+    'prefix' => 'auth'
+], function(){
     Auth::routes();
-    Route::any('{page?}/{action?}', Auth\ManageController::class)->name('manage');
+    Route::any('{page?}/{action?}', Auth\ManageController::class);
 });
 
-Route::domain('{account}.myapp.com')->group(function () {
-    Route::resource('user/{id}', function ($account, $id) {
-        //
-        dump($account, $id);
-    });
-});
-
-
-// Route::get('/admin', Admin\AdminController::class)->name('admin');
+// Route::group([ 
+//     'middleware' => ['web', 'admin', 'auth'],
+//     'namespace' => 'Modules\Admin\Http\Controllers'
+// ], function() {
+//     Route::resource('admin', AdminController::class);
+// });

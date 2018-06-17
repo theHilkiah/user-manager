@@ -25,7 +25,11 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Gate::define('view-modules', function ($user, $post) {
+        Gate::define('view-modules', function ($user) {
+            return $user->group_id == 1;
+        });
+
+        Gate::define('modify', function ($user) {
             return $user->group_id == 1;
         });
     }

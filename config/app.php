@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'APP'),
+    'name' => env('APP_NAME', 'Manager Pro'),
     'version' => env('APP_VERSION', 'v1.0'),
 
     /*
