@@ -20,12 +20,18 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
+
         $ID = auth()->user()->id;
         $data['User'] = User::find($ID);
-        return view("users.index", $data);
+
+        $path = trim($request->path(), '\/');
+        $page  = str_replace(['user/', 'user'], '', $path);
+        $view  = str_replace("/", ".", trim($page, '\/'));
+
+        return view("users." . ($view ?: 'index'), $data);
     }
 
     /**

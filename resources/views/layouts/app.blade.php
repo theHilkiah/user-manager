@@ -13,7 +13,8 @@
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://unpkg.com/bootstrap/dist/css/bootstrap.min.css">
     @yield('styles')
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
+    <link rel="stylesheet" href="https://bootswatch.com/4/{{$User->settings->data['theme'] ?? request('theme') ?? 'cosmo'}}/bootstrap.min.css">
     @stack('styles')
 </head>
 <body>

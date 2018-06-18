@@ -20,5 +20,6 @@ class Profile extends Model
     public function getPhotoAttribute($photo)
     {
       return asset('/storage/'.$photo);
-   }
+    }
+    
 }

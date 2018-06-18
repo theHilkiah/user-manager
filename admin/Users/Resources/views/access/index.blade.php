@@ -2,12 +2,26 @@
 
 @section('content')
     <div class="text-center">
-        <button type="submit" data-toggle="collapse" data-target="#add-new-group">Add New</button>
-        <div class="card collapse" id="add-new-group">
-            <div class="card-body">
-                @include("users::groups.create")
+      <h1 class="h3">Access & Permissions <button class="btn btn-info btn-sm float-right" type="submit" data-toggle="modal" data-target="#addNew">Add New</button></h1>
+      <hr>
+      <div id="addNew" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="addNewLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title" id="addNewLabel">Add New Permission</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
             </div>
+            <div class="modal-body">
+              @include("users::access.create")
+            </div>
+            <div class="modal-footer">
+              ...
+            </div>
+          </div>
         </div>
+      </div>
     </div>
     <div class="table-responsive">
         <table class="table data-table">
@@ -24,7 +38,7 @@
                    <td>
                        <a href="/admin/access/{{ $access->id }}/edit" class="btn btn-sm btn-outline-info">edit</a>
                    </td>
-            </tr>  
+            </tr>
             @endforeach
         </tbody>
         </table>

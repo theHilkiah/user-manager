@@ -5,9 +5,11 @@ namespace App\Models\Auth;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+use Admin\Users\Models\Group;
 use Admin\Users\Models\Notes;
 use Admin\Media\Models\Media;
 use App\Models\User\Profile;
+use App\Models\User\Settings;
 
 class User extends Authenticatable
 {
@@ -63,9 +65,17 @@ class User extends Authenticatable
         $lName = str_replace($this->fname,'', $this->name);
         return $lName;
     }
+    public function Group()
+    {
+        $q = $this->belongsTo(Group::class);
+        //dd($q->toSql(), $q->getBindings());
+        return $q;
+    }
+
     public function Media()
     {
-        return $q = $this->hasMany(Media::class);
+        $q = $this->hasMany(Media::class);
+        // dd($q->toSql(), $q->getBindings());
         return $q;
     }
     public function Notes()
@@ -77,6 +87,11 @@ class User extends Authenticatable
     {
         return $q = $this->hasOne(Profile::class);
         return $q;
+    }
+
+    public function Settings()
+    {
+      return $this->hasOne(Settings::class);
     }
 
 

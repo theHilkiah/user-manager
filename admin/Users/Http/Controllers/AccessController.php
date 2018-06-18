@@ -5,6 +5,7 @@ namespace Admin\Users\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Admin\Users\Models\Access;
 
 class AccessController extends Controller
 {
@@ -14,7 +15,7 @@ class AccessController extends Controller
      */
     public function index()
     {
-        $data['Permissions'] = Permissions::all();
+        $data['Permissions'] = Access::all();
         return view('users::access.index', $data);
     }
 

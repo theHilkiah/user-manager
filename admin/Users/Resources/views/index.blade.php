@@ -1,6 +1,8 @@
 @extends('users::layouts.master')
 
 @section('content')
+  <h1 class="h3">Account Users <button class="btn btn-info btn-sm float-right" type="submit" data-toggle="modal" data-target="#addNew">Add New</button></h1>
+  <hr>
     <div class="table-responsive">
         <table class="table data-table">
         <thead class="thead-dark">
@@ -22,7 +24,7 @@
                    <td>
                        <a href="/admin/users/{{ $user->id }}/edit" class="badge badge-primary">edit</a>
                    </td>
-            </tr>  
+            </tr>
             @endforeach
         </tbody>
         </table>

@@ -8,7 +8,8 @@
                     <th scope="col">#</th>
                     <th scope="col">Thumb</th>
                     <th scope="col">Path</th>
-                    <th scope="col">User</th>
+                    <th scope="col">Owner</th>
+                    <th scope="col">Uploader</th>
                     <th scope="col">Type</th>
                 </tr>
             </thead>
@@ -21,6 +22,7 @@
                         </td>
                         <td>{{$mda->file}}</td>
                         <td>{{$mda->user->name}}</td>
+                        <td>{{$mda->user->uploader->name}}</td>
                         <td>{{$mda->type}}</td>
                     </tr>
                 @endforeach

@@ -6,9 +6,10 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="ico/favicon.ico">
-    <title>Dashboard Template for Bootstrap</title>
+    <title>@yield('title', $title ?? config('app.name'))</title>
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://unpkg.com/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://bootswatch.com/4/{{$User->settings->theme ?? 'cosmos'}}/bootstrap.min.css">
     @yield('styles')
     <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
     @stack('styles')

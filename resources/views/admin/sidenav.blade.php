@@ -71,9 +71,9 @@ $activeLink = function($link, $class = 'active'){
     </a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">
+    <a class="nav-link{{$activeLink($link = 'admin/access')}}" href="/{{ $link }}">
       <span data-feather="file-text"></span>
-      Permissions
+      Access
     </a>
   </li>
 </ul>

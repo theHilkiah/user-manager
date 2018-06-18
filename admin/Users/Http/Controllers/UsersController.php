@@ -44,6 +44,14 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
+      try {
+        $request->merge(['password' => bcrypt($request->password)]);
+        $User =  User::create($request->input());
+        return back()->withSuccess('New user is now created');
+      } catch (\Exception $e) {
+        return back()->withError('Server Error: '.$e->getMessage());
+      }
+
     }
 
     /**

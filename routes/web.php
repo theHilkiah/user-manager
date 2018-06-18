@@ -24,7 +24,16 @@ Route::group([
 });
 
 Route::get('/home', User\HomeController::class);
-Route::resource('/user', User\UserController::class);
+
+Route::group([
+  'prefix' => 'user',
+  'namespace' => 'User'
+], function(){
+  // Route::resource('settings', UserController::class);
+  // Route::resource('uploads', UserController::class);
+  Route::resource('{page?}/{action?}', UserController::class);
+});
+
 // Route::group([
 //     'middleware' => ['web', 'admin', 'auth'],
 //     'namespace' => 'Modules\Admin\Http\Controllers'

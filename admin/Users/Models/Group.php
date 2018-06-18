@@ -9,6 +9,7 @@ class Group extends Model
    protected $fillable = [
       "label",
       'group_id',
+      'desc',
       "permissions",
    ];
 

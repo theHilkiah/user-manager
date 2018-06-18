@@ -20,6 +20,11 @@ class Media extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function Uploader()
+    {
+      return $this->belongsTo(User::class, 'uploader');
+    }
+
     public function getTypeAttribute()
     {
         $images = ['jpg', 'png', 'svg'];

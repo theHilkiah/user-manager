@@ -10,44 +10,66 @@
 @endpush
 <div class="container">
     <div class="card-columns">
-     <div class="card">
+     <div class="card  border-primary text-primary">
          <div class="card-header">Account</div>
          <div class="card-body">
-            <a href="">{{$User->verified? 'V': 'Unv'}}erified</a>
+           @php $popover = ''; @endphp
+            <a href="" data-toggle="popover" data-html="true" data-content="{!!$popover!!}">
+              {!! ($User->verified? '<span class="text-success">V': '<span class="text-danger">Un').'verified</span>'!!}
+            </a>
             |
-            <a href="">{{$User->active? 'Ina': 'A'}}ctivated</a>
+            <a href="">
+              {!! ($User->active? '<span class="text-success">A': '<span class="text-danger">Ina').'ctivated</span>'!!}
+            </a>
          </div>
          <div class="card-footer text-right">
              <a class="btn btn-sm btn-outline-info" href="/user/account">edit</a>
          </div>
      </div>
-     <div class="card">
+     <div class="card  border-primary text-primary">
          <div class="card-header">Documents</div>
          <div class="card-body">{{$User->media->count() ?? 0}} files</div>
          <div class="card-footer text-right">
              <a class="btn btn-sm btn-outline-info" href="/user/uploads">enter</a>
          </div>
      </div>
-     <div class="card">
+     <div class="card  border-primary text-primary">
          <div class="card-header">Widget #2</div>
          <div class="card-body"></div>
          <div class="card-footer"></div>
      </div>
-     <div class="card">
+     <div class="card  border-primary text-primary">
          <div class="card-header">Widget #4</div>
          <div class="card-body"></div>
          <div class="card-footer"></div>
      </div>
-     <div class="card">
+     <div class="card  border-primary text-primary">
          <div class="card-header">Widget #5</div>
          <div class="card-body"></div>
          <div class="card-footer"></div>
      </div>
-     <div class="card">
-         <div class="card-header">Widget #6</div>
-         <div class="card-body"></div>
-         <div class="card-footer"></div>
-     </div>
+     <form class="card  border-primary text-primary" action="{{url()->current()}}" method="get">
+         <div class="card-header">Settings</div>
+         <div class="card-body">
+            <div class="input-group">
+              <div class="input-group-append">
+                <span class="input-group-text" id="basic-addon2">Theme </span>
+              </div>
+              <select class="form-control" name="theme">
+                @php
+                  $current = ($User->settings->data['key'] ?? request('theme') ?? old('data.key')) ?? '';
+                @endphp
+                <option value=""></option>
+                @foreach (['cosmo', 'cyborg', 'flat', 'celurean'] as $k => $theme)
+                  <option value="{{$theme}}"{{$current == $theme? ' selected': ''}}>Theme {{$k + 1}}</option>
+                @endforeach
+              </select>
+            </div>
+         </div>
+         <div class="card-footer">
+           <button class="btn btn-sm btn-primary">Update</button>
+         </div>
+        </form>
     </div>
 </div>
 @endsection

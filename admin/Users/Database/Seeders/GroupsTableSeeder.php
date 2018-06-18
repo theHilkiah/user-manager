@@ -18,6 +18,7 @@ class GroupsTableSeeder extends Seeder
         return Group::create([
             "label" => "Admin",
             "group_id" => 1,
+            'desc' => 'This is the super Admin group',
             "permissions" => [""],
         ]);
     }
