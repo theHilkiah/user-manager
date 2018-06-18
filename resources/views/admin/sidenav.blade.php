@@ -4,6 +4,7 @@
       <source srcset="//placehold.it/64X64?text=PHOTO" type="image/svg+xml">
       <img src="//placehold.it/64X64?text=PHOTO" class="img-fluid img-thumbnail" alt="...">
     </picture>
+    <p><a href="/user">My User Page</a> | <a href="/user/account">My Account</a></p>
   </div>
 </div>
 @php
@@ -62,7 +63,7 @@ $activeLink = function($link, $class = 'active'){
         Users
       </a>
     </li>
-  
+
   <li class="nav-item">
     <a class="nav-link{{$activeLink($link = 'admin/groups')}}" href="/{{ $link }}">
       <span data-feather="file-text"></span>
@@ -92,7 +93,7 @@ $activeLink = function($link, $class = 'active'){
       </a>
     </li>
   @endcan
-  
+
   <li class="nav-item">
     <a class="nav-link" href="#">
       <span data-feather="file-text"></span>

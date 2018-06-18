@@ -7,11 +7,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 use Admin\Users\Models\Notes;
 use Admin\Media\Models\Media;
+use App\Models\User\Profile;
 
 class User extends Authenticatable
 {
     use Notifiable;
-    
+
     /**
     * The attributes that are mass assignable.
     *
@@ -32,7 +33,7 @@ class User extends Authenticatable
         "offline_at",
         "deleted_at",
     ];
-    
+
     /**
     * The attributes that should be hidden for arrays.
     *
@@ -51,29 +52,33 @@ class User extends Authenticatable
     {
         $name = explode(" ", $this->name);
         $fName = array_shift($name);
-        
+
         if(count($name) > 1 && str_is('*.', $fName))
             $fName = $fName.' '.array_shift($name);
         return $fName;
     }
-    
+
     public function getLnameAttribute()
     {
         $lName = str_replace($this->fname,'', $this->name);
         return $lName;
     }
-
-    public function Notes()
-    {
-        return $q = $this->hasMany(Notes::class);
-        dump($q->getBindings(), $q->toSql());
-        return $q;
-    }
-
     public function Media()
     {
         return $q = $this->hasMany(Media::class);
-        dump($q->getBindings(), $q->toSql());
         return $q;
     }
+    public function Notes()
+    {
+        return $q = $this->hasMany(Notes::class);
+        return $q;
+    }
+    public function Profile()
+    {
+        return $q = $this->belongsTo(Profile::class);
+        dd($q->toSgl(), $q->getBindings());
+        return $q;
+    }
+
+
 }

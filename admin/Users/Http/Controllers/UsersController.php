@@ -5,8 +5,8 @@ namespace Admin\Users\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
-use App\Models\Auth\{User,Group};
-use Admin\Users\Models\Notes;
+use App\Models\Auth\User;
+use Admin\Users\Models\{Group, Notes};
 
 class UsersController extends Controller
 {
@@ -57,7 +57,7 @@ class UsersController extends Controller
                 $view = 'show.groups';
                 $data['Groups'] = $this->groups;
                 break;
-            
+
             default:
                 # code...
                 break;
@@ -71,7 +71,7 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        $data['Groups'] = $User = $this->groups;        
+        $data['Groups'] = $User = $this->groups;
         $data['User'] = $User = $this->users->find($id);
         $data['Notes'] = $User->notes ?? [];
         return view('users::users.edit', $data);
@@ -85,14 +85,15 @@ class UsersController extends Controller
     public function update(Request $request, $user_id)
     {
         $request->merge(compact('user_id'));
-        $author_id = $request->user()->id;  
+        $author_id = $request->user()->id;
         $identity = compact('user_id', 'author_id');
 
-        if($request->notes == 'yes'){                      
+        if($request->notes == 'yes'){
             $Note = Notes::create($identity);
             $Note->fill($request->all())->save();
-        } elseif($request->login == 'yes'){
-            dump($request->all());
+        } else {
+            $User = User::find($user_id);
+            $User->update($request->all());
         }
         return back();
     }

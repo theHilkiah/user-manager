@@ -17,6 +17,7 @@ class CreateNotesTable extends Migration
             $table->increments('id');
             $table->integer('user_id');
             $table->integer('author_id');
+            $table->integer('type')->enum(1,2,3)->default(1);
             $table->string('title')->nullable();
             $table->text('content')->nullable();
             $table->timestamps();

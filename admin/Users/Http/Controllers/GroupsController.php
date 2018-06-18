@@ -5,7 +5,8 @@ namespace Admin\Users\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
-use App\Models\Auth\{User,Group};
+use Admin\Users\Models\Group;
+use App\Models\Auth\User;
 
 class GroupsController extends Controller
 {

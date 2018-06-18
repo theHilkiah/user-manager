@@ -20,7 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('email', 128)->unique();
             $table->string('password');
             $table->string('phone')->nullable();
-            $table->integer('group_id')->default(1);
+            $table->integer('group_id')->default(-1);
             $table->string('temppass')->nullable();
             $table->string('secure_code')->nullable();
             $table->string('access')->nullable();

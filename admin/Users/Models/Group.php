@@ -4,11 +4,15 @@ namespace Admin\Users\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Access extends Model
+class Group extends Model
 {
    protected $fillable = [
       "label",
-      "title",
-      "content",
+      'group_id',
+      "permissions",
    ];
+
+   protected $casts = [
+     "permissions" => "array"
+  ];
 }

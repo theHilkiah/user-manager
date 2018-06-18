@@ -24,7 +24,8 @@ Route::group([
 });
 
 Route::get('/home', User\HomeController::class);
-// Route::group([ 
+Route::resource('/user', User\UserController::class);
+// Route::group([
 //     'middleware' => ['web', 'admin', 'auth'],
 //     'namespace' => 'Modules\Admin\Http\Controllers'
 // ], function() {

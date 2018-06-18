@@ -8,7 +8,7 @@ use App\Models\Auth\User;
 class Notes extends Model
 {
     protected $fillable = [
-        "user_id", "author_id", 'title', 'content'
+        "user_id", "author_id", 'type', 'title', 'content'
     ];
 
     public function getSignatureAttribute()

@@ -9,56 +9,44 @@
 </style>
 @endpush
 <div class="container">
-    <form method="post" class="card-deck" action="{{ url()->current() }}">
-        @csrf
-    <fieldset class="card shadowed">
-        <legend class="card-title"><span class="btn btn-secondary bordered mx-3">Login Info</span></legend>
-        <div class="card-body pb-1">
-            <div class="form-group">
-                <label for="email">Full Name</label>
-                <input type="text" class="form-control" name="name" value="{{ $User->name ?? old('name') }}" disabled>
-            </div>
-            <div class="form-group">
-                <label for="email">Email Address</label>
-                <input type="text" class="form-control" name="email" value="{{ $User->email ?? old('email') }}" disabled>
-            </div>
-            <div class="form-group">
-                <label for="email">Phone Number</label>
-                <input type="text" class="form-control" name="phone" value="{{ $User->phone ?? old('phone') }}" disabled>
-            </div>         
-        </div>
-         <div class="card-body collapse pt-1" id="password-changer">
-            <div class="form-group">
-                <label for="password">New Password</label>
-                <input type="password" class="form-control" name="old_password" value="">
-            </div>
-            <div class="form-group">
-                <label for="password">New Password</label>
-                <input type="password" class="form-control" name="password" value="">
-                @if($errors->has('oldpass'))
-                <span class="help-block text-danger">{{ $errors->first() }}</span>
-                @endif
-            </div>
-            <div class="form-group">
-                <label for="password_confirmation">Retype Password</label>
-                <input type="password" class="form-control" name="password_confirmation" value="">
-            </div>
-        </div>
-        <div class="card-body row">            
-            <div class="col">                      
-                <a href="#password-changer" data-toggle="collapse">Change/hide Password</a>
-            </div>
-            <div class="col">
-                <button class="btn btn-block">Submit</button>
-            </div>
-        </div>
-    </fieldset>
-    <fieldset class="card shadowed">
-        <legend class="card-title"><span class="btn btn-secondary bordered mx-3">Basic Info</span></legend>
-        
-       
-    </fieldset>
-</form>
+    <div class="card-columns">
+     <div class="card">
+         <div class="card-header">Account</div>
+         <div class="card-body"></div>
+         <div class="card-footer text-right">
+             <a class="btn btn-sm btn-outline-info" href="/user/account">edit</a>
+         </div>
+     </div>
+     <div class="card">
+         <div class="card-header">Documents</div>
+         <div class="card-body"></div>
+         <div class="card-footer text-right">
+             <a class="btn btn-sm btn-outline-info" href="/user/uploads">enter</a>
+         </div>
+     </div>
+     <div class="card">
+         <div class="card-header">Widget #2</div>
+         <div class="card-body"></div>
+         <div class="card-footer"></div>
+     </div>
+     <div class="card">
+         <div class="card-header">Widget #4</div>
+         <div class="card-body"></div>
+         <div class="card-footer"></div>
+     </div>
+     <div class="card">
+         <div class="card-header">Widget #5</div>
+         <div class="card-body"></div>
+         <div class="card-footer"></div>
+     </div>
+     <div class="card">
+         <div class="card-header">Widget #6</div>
+         <div class="card-body"></div>
+         <div class="card-footer"></div>
+     </div>
+    </div>
 </div>
-
+@endsection
+@section('scripts')
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
 @endsection

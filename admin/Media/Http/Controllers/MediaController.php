@@ -35,18 +35,24 @@ class MediaController extends Controller
      */
     public function store(Request $request)
     {
-        $uploader = $request->user()->id;
-        $request->merge(compact('uploader'));
-        $media = $request->file;
-        $name = $media->getClientOriginalName();
-        $uDir = 'users/'.$request->user_id; 
-        $path = storage_path($uDir.'/'.$name);
-               
-        $file = $media->storeAs($uDir, $name);
-        $data = $request->except('file');
-        $data = array_merge($data, compact('file'));
-        $New = Media::create($data);
-        dump($New->getAttributes());
+        try {
+            $uploader = $request->user()->id;
+            $request->merge(compact('uploader'));
+            $media = $request->file;
+            $name = $media->getClientOriginalName();
+            $uDir = 'users/'.$request->user_id;
+            $path = storage_path($uDir.'/'.$name);
+
+            $file = $media->storeAs($uDir, $name);
+            $data = $request->except('file');
+            $data = array_merge($data, compact('file'));
+            $New = Media::create($data);
+            return 'Success';
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+
     }
 
     /**

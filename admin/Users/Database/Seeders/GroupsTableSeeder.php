@@ -4,8 +4,9 @@ namespace Admin\Users\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
+use Admin\Users\Models\Group;
 
-class UsersDatabaseSeeder extends Seeder
+class GroupsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,8 +15,10 @@ class UsersDatabaseSeeder extends Seeder
      */
     public function run()
     {
-        Model::unguard();
-
-        $this->call("GroupsTableSeeder");
+        return Group::create([
+            "label" => "Admin",
+            "group_id" => 1,
+            "permissions" => [""],
+        ]);
     }
 }

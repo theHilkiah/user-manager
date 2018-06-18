@@ -20,7 +20,8 @@
             <select name="group_id" class="form-control">
                 <option value=""></option>
                 @foreach ($Groups as $group)
-                    <option value="{{$group->id}}">{{$group->label}}</option>
+                    @php $selected = (@$group->id == @$group_id)? ' selected': ''; @endphp
+                    <option value="{{$group->id}}"{{$selected}}>{{$group->label}}</option>
                 @endforeach
             </select>
         </div>
