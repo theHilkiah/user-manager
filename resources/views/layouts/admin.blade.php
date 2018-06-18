@@ -15,7 +15,7 @@
   </head>
 
   <body>
-    
+
     <header>
       @include('admin.header')
     </header>
@@ -28,6 +28,7 @@
           </div>
         </nav>
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+           @include('admin.alerts')
           @yield('layout')
         </main>
       </div>

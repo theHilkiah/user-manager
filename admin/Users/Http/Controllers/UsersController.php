@@ -88,14 +88,19 @@ class UsersController extends Controller
         $author_id = $request->user()->id;
         $identity = compact('user_id', 'author_id');
 
-        if($request->notes == 'yes'){
-            $Note = Notes::create($identity);
-            $Note->fill($request->all())->save();
-        } else {
-            $User = User::find($user_id);
-            $User->update($request->all());
+        try {
+            if($request->notes == 'yes'){
+                $Note = Notes::create($identity);
+                $Note->fill($request->all())->save();
+            } else {
+                $User = User::find($user_id);
+                $User->update($request->all());
+            }
+            return back()->withSuccess('Successfully updated records');
+        } catch (\Exception $e) {
+            return back()->withErrors($e->getMessage());
         }
-        return back();
+
     }
 
     /**

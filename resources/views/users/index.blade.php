@@ -12,14 +12,18 @@
     <div class="card-columns">
      <div class="card">
          <div class="card-header">Account</div>
-         <div class="card-body"></div>
+         <div class="card-body">
+            <a href="">{{$User->verified? 'V': 'Unv'}}erified</a>
+            |
+            <a href="">{{$User->active? 'Ina': 'A'}}ctivated</a>
+         </div>
          <div class="card-footer text-right">
              <a class="btn btn-sm btn-outline-info" href="/user/account">edit</a>
          </div>
      </div>
      <div class="card">
          <div class="card-header">Documents</div>
-         <div class="card-body"></div>
+         <div class="card-body">{{$User->media->count() ?? 0}} files</div>
          <div class="card-footer text-right">
              <a class="btn btn-sm btn-outline-info" href="/user/uploads">enter</a>
          </div>

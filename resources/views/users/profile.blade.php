@@ -6,9 +6,12 @@
         <div class="form-row">
             <div class="col-md-4 text-center">
                 <label for="name">Photo</label>
-                <img src="{{$$User->profile->photo ?? '//placehold.it/128X128?Photo'}}" alt="" class="img-thumbnail">
+                <img id="photo" src="{{$User->profile->photo ?? '//placehold.it/128X128?Photo'}}" alt="" class="img-thumbnail">
                 <br>
-                <input class="form-control" type="file" name="name" value="{{ $User->profile->name ?? old('name') }}">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" name="photo" onchange="previewFile(event, '#photo')" value="{{$User->profile->photo??''}}">
+                    <label class="custom-file-label" for="photo"></label>
+                </div>
             </div>
             <div class="col">
                 <label for="name">Bio</label>
@@ -44,3 +47,16 @@
 
     </fieldset>
 </form>
+@push('scripts')
+<script>
+    var previewFile = function(event, _id_) {
+        console.log(event, _id_);
+       var reader = new FileReader();
+       reader.onload = function(){
+         var output = document.querySelector(_id_);
+         output.src = reader.result;
+       };
+       reader.readAsDataURL(event.target.files[0]);
+     };
+</script>
+@endpush

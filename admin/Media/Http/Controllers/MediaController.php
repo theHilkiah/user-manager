@@ -47,7 +47,7 @@ class MediaController extends Controller
             $data = $request->except('file');
             $data = array_merge($data, compact('file'));
             $New = Media::create($data);
-            return 'Success';
+            return $uDir.'/'.$name;
         } catch (\Exception $e) {
             return $e->getMessage();
         }

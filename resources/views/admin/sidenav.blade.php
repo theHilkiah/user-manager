@@ -1,8 +1,8 @@
 <div class="card">
   <div class="card-body text-center">
     <picture>
-      <source srcset="//placehold.it/64X64?text=PHOTO" type="image/svg+xml">
-      <img src="//placehold.it/64X64?text=PHOTO" class="img-fluid img-thumbnail" alt="...">
+      <source srcset="{{$photo = (auth()->user()->profile->photo ?? '//placehold.it/64X64?text=PHOTO')}}" type="image/svg+xml">
+      <img src="{{$photo}}" class="img-fluid img-thumbnail" alt="...">
     </picture>
     <p><a href="/user">My User Page</a> | <a href="/user/account">My Account</a></p>
   </div>

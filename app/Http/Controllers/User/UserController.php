@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Auth\User;
 use App\Models\User\Profile;
+use Admin\Media\Http\Controllers\MediaController;
 
 class UserController extends Controller
 {
@@ -23,7 +24,7 @@ class UserController extends Controller
     {
         //
         $ID = auth()->user()->id;
-        $data = User::find($ID);
+        $data['User'] = User::find($ID);
         return view("users.index", $data);
     }
 
@@ -97,17 +98,30 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-        dd($request->all());
+
         $ID = auth()->id();
         $User = User::find($ID);
-        if($id == 'account' && $request->type == 'login'){
-            $User->update($request->all());
-        } elseif($id == 'account' && $request->type == 'profile'){
-            $Pro  = $User->profile ?? Profile::create(['user_id' => $ID]);
-            $Pro->update($request->all());
+
+        try {
+            if($request->photo){
+                $request->merge([
+                    'user_id' => $request->user()->id,
+                    'file' => $request->file('photo')
+                ]);
+                $photo = app(MediaController::class)->store($request);
+            }
+            if($id == 'account' && $request->type == 'login'){
+                $User->update($request->all());
+            } elseif($id == 'account' && $request->type == 'profile'){
+                $Pro  = $User->profile ?? Profile::create(['user_id' => $ID]);
+                if($photo) $request->merge(compact('photo'));
+                $Pro->update($request->input());
+            }
+            return back()->withSuccess('Succsssfully updated records!');
+        } catch (\Exception $e) {
+            return back()->withError($e->getMessage());
         }
-        return back();
+
     }
 
     /**

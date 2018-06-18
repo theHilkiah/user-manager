@@ -16,7 +16,9 @@
                 @foreach ($Media as $mda)
                     <tr>
                         <td>{{$mda->id}}</td>
-                        <td>{{$mda->thumb}}</td>
+                        <td>
+                           <img class="img-thumb" src="{{asset('storage/'.$mda->file)}}" alt="">
+                        </td>
                         <td>{{$mda->file}}</td>
                         <td>{{$mda->user->name}}</td>
                         <td>{{$mda->type}}</td>

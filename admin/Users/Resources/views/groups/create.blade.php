@@ -17,7 +17,7 @@
     </div>
     <div class="form-group">
         <label for="permissions">Permissions</label>
-        <select name="permissions[]" class="form-control select2" multiple>
+        <select name="permissions[]" class="form-control select2" multiple="multiple">
             <option value="">(select one or more)</option>
             <option value="1">Can write</option>
             <option value="2">Can edit</option>
@@ -27,7 +27,7 @@
     </div>
     <div class="form-row">
         <div class="col">
-            
+
         </div>
         <div class="col">
             <button type="submit" class="btn btn-block btn-primary">Submit</button>

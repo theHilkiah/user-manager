@@ -1,5 +1,5 @@
 @extends('users::layouts.master')
-{{-- 
+{{--
 @push('styles')
 <style>
     .dropzone .done-upload{
@@ -76,7 +76,7 @@
                                 <p class="mt-3">
                                     Upload files for {{$User->fname}}
                                 </p>
-                                @include('users::users.create.notes')
+                                @include('users::users.create.media')
                             </div>
                             <div class="col">
                                 <p>UPLOADED FILES</p>

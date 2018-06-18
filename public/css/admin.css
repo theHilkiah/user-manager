@@ -114,3 +114,25 @@ body {
 .border-bottom {
     border-bottom: 1px solid #e5e5e5;
 }
+
+.alert-dismissible{
+   position: absolute;
+   left: 0;
+   right: 0;
+}
+.select2-container{
+   width:100%!important;
+}
+.img-thumb{
+    max-height: 32px;
+    border: 2px solid #cccc;
+    border-radius: 5px;
+}
+img[src*=".rtf"] {
+    display: none;
+}
+img[src*=".rtf"] > div::before {
+    content: attr(src);
+    display: block;
+    width: 100px;
+}

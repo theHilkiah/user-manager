@@ -2,7 +2,7 @@
     @csrf
     @method('PUT')
     <fieldset>
-        <legend class="d-inline text-center w-50">LOGIN</legend>
+        {{-- <legend class="d-inline text-center w-50">LOGIN</legend> --}}
         <div class="form-group">
             <label for="name">Full Name</label>
             <input class="form-control" type="text" name="name" value="{{ $name ?? old('name') }}">
@@ -18,7 +18,7 @@
         <div class="form-group">
             <label for="name">Group</label>
             <select name="group_id" class="form-control">
-                <option value=""></option>
+                <option value="-1">(No group)</option>
                 @foreach ($Groups as $group)
                     @php $selected = (@$group->id == @$group_id)? ' selected': ''; @endphp
                     <option value="{{$group->id}}"{{$selected}}>{{$group->label}}</option>

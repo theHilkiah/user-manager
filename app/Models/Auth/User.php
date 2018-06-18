@@ -75,8 +75,7 @@ class User extends Authenticatable
     }
     public function Profile()
     {
-        return $q = $this->belongsTo(Profile::class);
-        dd($q->toSgl(), $q->getBindings());
+        return $q = $this->hasOne(Profile::class);
         return $q;
     }
 

@@ -16,4 +16,9 @@ class Profile extends Model
         "zip",
         "bio",
     ];
+
+    public function getPhotoAttribute($photo)
+    {
+      return asset('/storage/'.$photo);
+   }
 }

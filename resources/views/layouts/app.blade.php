@@ -91,9 +91,10 @@
             </div>
         </nav>
 
-        <main class="py-4">
+        <main class="">
+            @include('admin.alerts')
             @auth
-            <h1 class="text-center">{{auth()->user()->name ?? '' }}</h1>
+            <h1 class="text-center py-3">{{auth()->user()->name ?? '' }}</h1>
             @endauth
             @yield('content')
         </main>
@@ -102,7 +103,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://unpkg.com/bootstrap/dist/js/bootstrap.min.js"></script>
     @yield('scripts')
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
     @stack('scripts')
 </body>
 </html>
