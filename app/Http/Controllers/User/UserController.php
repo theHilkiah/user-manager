@@ -23,7 +23,7 @@ class UserController extends Controller
     public function index(Request $request)
     {
         //
-
+        dump($request->path());
         $ID = auth()->user()->id;
         $data['User'] = User::find($ID);
 
