@@ -22,8 +22,6 @@ class UserController extends Controller
      */
     public function index(Request $request)
     {
-        //
-        dump($request->path());
         $ID = auth()->user()->id;
         $data['User'] = User::find($ID);
 
@@ -66,16 +64,16 @@ class UserController extends Controller
     {
         //
         $ID = auth()->user()->id;
+        $data['User'] = User::find($ID);
         switch ($id) {
            case 'account':
               return $this->edit($ID);
               break;
            case 'uploads':
-              $data['User'] = User::find($ID);
               $view = 'uploads';
               break;
            default:
-              // code...
+              $view = 'index';
               break;
         }
         return view("users.$view", $data);

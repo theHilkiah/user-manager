@@ -35,17 +35,17 @@
      </div>
      <div class="card  border-primary text-primary">
          <div class="card-header">Widget #2</div>
-         <div class="card-body"></div>
+         <div class="card-body"> ... </div>
          <div class="card-footer"></div>
      </div>
      <div class="card  border-primary text-primary">
          <div class="card-header">Widget #4</div>
-         <div class="card-body"></div>
+         <div class="card-body"> ... </div>
          <div class="card-footer"></div>
      </div>
      <div class="card  border-primary text-primary">
          <div class="card-header">Widget #5</div>
-         <div class="card-body"></div>
+         <div class="card-body"> ... </div>
          <div class="card-footer"></div>
      </div>
      <form class="card  border-primary text-primary" action="{{url()->current()}}" method="get">

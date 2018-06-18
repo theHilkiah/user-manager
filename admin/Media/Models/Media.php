@@ -25,6 +25,19 @@ class Media extends Model
       return $this->belongsTo(User::class, 'uploader');
     }
 
+    public function getPreviewAttribute()
+    {
+      switch ($this->type) {
+        case 'image':
+          return 'src="'.asset('storage/'.$this->file).'"';
+          break;
+
+        default:
+          return 'src="//placehold.it/32X32?text=FILE"';
+          break;
+      }
+    }
+
     public function getTypeAttribute()
     {
         $images = ['jpg', 'png', 'svg'];

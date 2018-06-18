@@ -18,18 +18,20 @@
   <body>
 
     <header>
+      @include('admin.brand')
       @include('admin.header')
     </header>
 
     <div class="container-fluid">
       <div class="row">
         <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-          <div class="sidebar-sticky">
+          <div class="sidebar-sticky pt-0">
+            @include('admin.badge')
             @include('admin.sidenav')
           </div>
         </nav>
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-           @include('admin.alerts')
+        <main role="main" class="col-md-9 ml-sm-auto col-lg-10">
+          @include('admin.alerts')
           @yield('layout')
         </main>
       </div>

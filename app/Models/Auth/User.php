@@ -47,7 +47,7 @@ class User extends Authenticatable
 
     public function getIsAdminAttribute()
     {
-        return $this->group_id == 1;
+        return $this->group_id > 0;
     }
 
     public function getFnameAttribute()

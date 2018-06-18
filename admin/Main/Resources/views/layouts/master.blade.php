@@ -1,19 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Module Main</title>
-
-       <!-- Laravel Mix - CSS File -->
-       <!-- <link rel="stylesheet" href="{{ mix('css/main.css') }}"> -->
-
-    </head>
-    <body>
-        @yield('content')
-
-        <!-- Laravel Mix - JS File -->
-        <!-- <script src="{{ mix('js/main.js') }}"></script> -->
-    </body>
-</html>
+@extends('layouts.admin')
+@section('layout')
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="#">Home</a></li>
+      <li class="breadcrumb-item"><a href="#">Library</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Data</li>
+    </ol>
+  </nav>
+  @yield('content')
+@endsection

@@ -26,11 +26,15 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         Gate::define('view-modules', function ($user) {
+            return $user->group_id > 0 && $user->group_id <= 3;
+        });
+
+        Gate::define('modify-users', function ($user) {
             return $user->group_id == 1;
         });
 
-        Gate::define('modify', function ($user) {
-            return $user->group_id == 1;
+        Gate::define('edit-settings', function ($user) {
+            return $user->group_id > 0 && $user->group_id <= 2;
         });
     }
 }
