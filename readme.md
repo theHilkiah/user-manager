@@ -46,6 +46,7 @@ Lastly, if you are on your local machine, intiate the server
 ### Summary
 
 Copy the following chunk of code and run (paste) it where you want to create this application:
+NOTE: change the root username and empty password to match your settings
 
     mv user-manager user-manager-copy || true &&
     git clone https://github.com/theHilkiah/user-manager.git &&
@@ -55,6 +56,13 @@ Copy the following chunk of code and run (paste) it where you want to create thi
     npm install &&
     npm run dev &&
     echo "create database usrmngrdb01" | mysql -u'root' -p'' &&
+    php artisan key:generate &&
+    php artisan migrate:refresh --seed &&
+    php artisan module:seed &&
+    php artisan config:clear &&
+    php artisan storage:link &&
+    start "" "http://127.0.0.1:8888" &&
+    php artisan serve --port=8888
 
 
 If this doesn't work, you can break it down like so:
@@ -65,14 +73,7 @@ If this doesn't work, you can break it down like so:
     composer update &&
     npm i npm@latest -g &&
     npm install &&
-    npm run dev &&
-    php artisan key:generate &&
-    php artisan migrate:refresh --seed &&
-    php artisan module:seed &&
-    php artisan config:clear &&
-    php artisan storage:link &&
-    start "" "http://127.0.0.1:8888" &&
-    php artisan serve --port=8888
+    npm run dev 
 
 Make sure the database here is created according to the config/database.php or .env file.
 
