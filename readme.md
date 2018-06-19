@@ -45,16 +45,20 @@ Lastly, if you are on your local machine, intiate the server
 
 ### Summary
 Copy the following chunk of code and run (paste) it where you want to create this application
+    
     mv user-manager user-manager-copy &&
     git clone https://github.com/theHilkiah/user-manager.git &&
     cd user-manager &&
     composer update &&
     npm i npm@latest -g && npm install &&
     php artisan key:generate &&
+    
 Make sure the database here is created according to the config/database.php or .env file. Then copy and run the following:
+    
     php artisan migrate --seed && php artisan module:seed &&
     php artisan serve --port=8888
     start "http://127.0.0.1:888"
+    
     
 ## License
 User Manager Pro is an open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
