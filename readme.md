@@ -60,7 +60,10 @@ Then copy and run the following:
     php artisan migrate:refresh --seed &&
     php artisan module:seed &&
     php artisan serve --port=8888 &&
-    start "http://127.0.0.1:888"
+
+If you are on windows, you can run the following to launch the new application using the default browser
+
+    start "" "http://127.0.0.1:8888"
 
 
 ## License
