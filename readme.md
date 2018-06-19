@@ -30,7 +30,7 @@ After that, you should generate an ecnryption key for the application:
 
 Finally, run all the migrations to build the databases
 
-    `php artisan migrate --seed && php artisan module:make`
+    `php artisan migrate --seed && php artisan module:seed`
 
 Lastly, if you are on your local machine, intiate the server
 
