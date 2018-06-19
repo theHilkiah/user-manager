@@ -51,20 +51,17 @@ Copy the following chunk of code and run (paste) it where you want to create thi
     cd user-manager &&
     composer update &&
     npm i npm@latest -g &&
-    npm install &&
-    php artisan key:generate &&
+    npm install    
 
 Make sure the database here is created according to the config/database.php or .env file.
 Then copy and run the following:
-
+    
+    php artisan key:generate &&
     php artisan migrate:refresh --seed &&
     php artisan module:seed &&
-    php artisan serve --port=8888 &&
-
-If you are on windows, you can run the following to launch the new application using the default browser
-
-    start "" "http://127.0.0.1:8888"
-
+    php artisan config:clear &&
+    start "" "http://127.0.0.1:8888" &
+    php artisan serve --port=8888
 
 ## License
 User Manager Pro is an open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
