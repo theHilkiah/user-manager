@@ -19,6 +19,7 @@ To run this application, you need to have the following:
 
 ## Installation
 If you have command line available copy and paste the following code:
+
     `
     git clone https://github.com/theHilkiah/user-manager.git &&
     composer update &&
@@ -27,6 +28,7 @@ If you have command line available copy and paste the following code:
     php artisan migrate --seed && php artisan module:seed &&
     php artisan serve --port=8888
     `
+    
 Otherwise, Either download using the button above or use the command line to clone this to your application environment:
 
     `git clone https://github.com/theHilkiah/user-manager.git`
