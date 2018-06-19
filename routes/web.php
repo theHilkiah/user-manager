@@ -26,7 +26,8 @@ Route::group([
 Route::get('/home', User\HomeController::class);
 
 Route::group([
-  'namespace' => 'User'
+  'namespace' => 'User',
+  "middleware" => ["web", "auth"]
 ], function(){
     Route::resource('user', UserController::class);
 });
