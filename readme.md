@@ -47,6 +47,7 @@ Lastly, if you are on your local machine, intiate the server
 
     `
     git clone https://github.com/theHilkiah/user-manager.git &&
+    cd user-manager &&
     composer update &&
     npm i npm@latest -g && npm install &&
     php artisan key:generate &&
