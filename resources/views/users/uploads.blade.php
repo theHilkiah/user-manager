@@ -21,9 +21,8 @@
         <div>
           @verbatim
           <div id="uploads" class="card-columns">
-            <div class="d-inline-block" v-for="media in uploadedFiles">
-              <img class="img-thumb-64" :src="'/storage/'+media.file" :alt="media.url">
-              <div>{{media.title}}</div>
+            <div class="card" v-for="media in uploadedFiles">
+              <img class="card-img-top img-thumb-64" :src="'/storage/'+media.file" :alt="media.title">
            </div>
          </div>
           @endverbatim
