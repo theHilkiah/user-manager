@@ -51,11 +51,12 @@ Copy the following chunk of code and run (paste) it where you want to create thi
     cd user-manager &&
     composer update &&
     npm i npm@latest -g &&
-    npm install    
+    npm install &&
+    npm run dev
 
 Make sure the database here is created according to the config/database.php or .env file.
 Then copy and run the following:
-    
+
     php artisan key:generate &&
     php artisan migrate:refresh --seed &&
     php artisan module:seed &&
