@@ -15,6 +15,7 @@ To run this application, you need to have the following:
  - A local [web server](http://www.wampserver.com/en/) can also be good for development. 
  - It is probably a good idea to also have a command line tool, e.g. [git](https://git-scm.com/)
  - You need to have php 7+ and a mysql server running on your server/machine
+ - You should also have [nodejs](https://nodejs.org/en/download/) installed on your server/machine
 
 ## Installation
 If you have command line available copy and paste the following code:
