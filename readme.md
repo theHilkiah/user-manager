@@ -14,9 +14,19 @@ To run this application, you need to have the following:
  - [composer](https://getcomposer.org/download/) installed on your machine and a server. 
  - A local [web server](http://www.wampserver.com/en/) can also be good for development. 
  - It is probably a good idea to also have a command line tool, e.g. [git](https://git-scm.com/)
+ - You need to have php 7+ and a mysql server running on your server/machine
 
 ## Installation
-Either download using the button above or use the command line to clone this to your application environment:
+If you have command line available copy and paste the following code:
+    `
+    git clone https://github.com/theHilkiah/user-manager.git &&
+    composer update &&
+    npm i npm@latest -g && npm install &&
+    php artisan key:generate &&
+    php artisan migrate --seed && php artisan module:seed &&
+    php artisan serve --port=8888
+    `
+Otherwise, Either download using the button above or use the command line to clone this to your application environment:
 
     `git clone https://github.com/theHilkiah/user-manager.git`
 
