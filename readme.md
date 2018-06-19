@@ -18,18 +18,8 @@ To run this application, you need to have the following:
  - You should also have [nodejs](https://nodejs.org/en/download/) installed on your server/machine
 
 ## Installation
-If you have command line available copy and paste the following code:
 
-    `
-    git clone https://github.com/theHilkiah/user-manager.git &&
-    composer update &&
-    npm i npm@latest -g && npm install &&
-    php artisan key:generate &&
-    php artisan migrate --seed && php artisan module:seed &&
-    php artisan serve --port=8888
-    `
-    
-Otherwise, Either download using the button above or use the command line to clone this to your application environment:
+Either download using the button above or use the command line to clone this to your application environment:
 
     `git clone https://github.com/theHilkiah/user-manager.git`
 
@@ -53,6 +43,15 @@ Lastly, if you are on your local machine, intiate the server
 
     `php artisan serve --port=8888`
 
+### Summary
 
+    `
+    git clone https://github.com/theHilkiah/user-manager.git &&
+    composer update &&
+    npm i npm@latest -g && npm install &&
+    php artisan key:generate &&
+    php artisan migrate --seed && php artisan module:seed &&
+    php artisan serve --port=8888
+    `
 ## License
 User Manager Pro is an open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
