@@ -44,8 +44,8 @@
          <div class="card-footer"></div>
      </div>
      <div class="card  border-primary text-primary">
-         <div class="card-header">Widget #5</div>
-         <div class="card-body"> ... </div>
+         <div class="card-header">Messages</div>
+         <div class="card-body"> {{$User->notes->count(['type' => '1'])}} </div>
          <div class="card-footer"></div>
      </div>
      <form class="card  border-primary text-primary" action="{{url()->current()}}" method="get">

@@ -170,6 +170,15 @@ img[src*=".rtf"]>div::before {
     display: block;
     width: 100px;
 }
+.truncate {
+  width: auto;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.truncate.w-sm{
+  max-width: 480px;
+}
 
 .shadowed {
     box-shadow: 1px 1px 1rem 1px

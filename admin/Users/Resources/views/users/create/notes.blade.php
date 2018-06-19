@@ -10,10 +10,9 @@
             <div class="form-group row">
                 <div class="col">
                     <select name="type" class="form-control">
-                        <option value="1">(Visibility)</option>
-                        <option value="1">Visible to Writer</option>
-                        <option value="2">Visible to User</option>
-                        <option value="3">Everyone Can See</option>
+                        <option value="1">Note to Self</option>
+                        <option value="2">Note to User</option>
+                        <option value="3">Note for All</option>
                     </select>
                 </div>
                 <div class="col">

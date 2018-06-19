@@ -83,11 +83,11 @@ display: inline-block;
               {{--  <ul>  --}}
                 @foreach ($Notes->sortByDesc('created_at') as $note)
                 <blockquote class="blockquote">
-                  <strong>{{ $note->title }}</strong>
-                  <p class="mb-0">{!! $note->content !!}</p>
+                  <strong>{{ $note->title }}</strong> - <small>{{$note->type}}</small>
+                  <p class="mb-0 truncate w-sm" data-toggle="tooltip" data-trigger="hover" data-title="{!! $note->content !!}">{!! $note->content !!}</p>
                   <footer class="blockquote-footer"><cite title="Source Title">{{ $note->signature }}</cite></footer>
-                </blockquote>  
-                
+                </blockquote>
+
                 {{--  <li>
                     <strong>{{ $note->title }}</strong><br>
                     {{ $note->content }}<br>

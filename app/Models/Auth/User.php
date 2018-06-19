@@ -31,10 +31,13 @@ class User extends Authenticatable
         "verified",
         "active",
         "online",
+        "status",
         "online_at",
         "offline_at",
         "deleted_at",
     ];
+
+    protected $casts = ["status" => "int"];
 
     /**
     * The attributes that should be hidden for arrays.
@@ -80,7 +83,11 @@ class User extends Authenticatable
     }
     public function Notes()
     {
-        return $q = $this->hasMany(Notes::class);
+        $q = $this->hasMany(Notes::class)->where(function($w){
+                      $w->where('author_id', auth()->id())
+                        ->orWhere('type', '>', 1);
+                    });
+        // dump($q->toSql(), $q->getBindings());
         return $q;
     }
     public function Profile()

@@ -10,7 +10,7 @@ use Admin\Users\Models\{Group, Notes};
 
 class UsersController extends Controller
 {
-    protected $users, $groups, $permissions;
+    protected $users, $groups, $notes, $permissions;
 
     public function __construct()
     {

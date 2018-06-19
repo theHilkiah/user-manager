@@ -27,6 +27,7 @@ class CreateUsersTable extends Migration
             $table->boolean('verified')->default(false);
             $table->boolean('active')->default(false);
             $table->boolean('online')->default(false);
+            $table->integer('status')->enum(0,1,2,3)->default(0);
             $table->timestamp('online_at')->nullable();
             $table->timestamp('offline_at')->nullable();
             $table->timestamp('deleted_at')->nullable();
