@@ -10,19 +10,22 @@ A web application used to manage users
 This application is designed to help companies better handler their interactions with clients and employees equally.
 
 ## Requirements
-To run this application, you need to have [composer](https://getcomposer.org/download/) installed on your machine and a server. A local [web server](http://www.wampserver.com/en/) can also be good for development. It is probably a good idea to also have a command line condusive to [git](https://git-scm.com/)
+To run this application, you need to have the following: 
+ - [composer](https://getcomposer.org/download/) installed on your machine and a server. 
+ - A local [web server](http://www.wampserver.com/en/) can also be good for development. 
+ - It is probably a good idea to also have a command line tool, e.g. [git](https://git-scm.com/)
 
 ## Installation
 Either download using the button above or use the command line to clone this to your application environment:
 - git clone https://github.com/theHilkiah/user-manager.git
 Then, make sure you run the composer update to get all the vendor packages
-- composer update
+    ``composer update``
 After that, you should generate an ecnryption key for the application:
-- php artisan key:generate
+    ``php artisan key:generate``
 Finally, run all the migrations to build the databases
-- php artisan migrate --seed && php artisan module:make
+    ``php artisan migrate --seed && php artisan module:make``
 Lastly, if you are on your local machine, intiate the server
-- php artisan serve --port=8888
+    ``php artisan serve --port=8888``
 
 ## License
 
