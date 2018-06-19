@@ -55,7 +55,8 @@ Copy the following chunk of code and run (paste) it where you want to create thi
     
 Make sure the database here is created according to the config/database.php or .env file. Then copy and run the following:
     
-    php artisan migrate:refresh --seed && php artisan module:seed &&
+    php artisan migrate:refresh --seed && 
+    php artisan module:seed &&
     php artisan serve --port=8888
     start "http://127.0.0.1:888"
     
