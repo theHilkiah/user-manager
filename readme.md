@@ -46,7 +46,7 @@ Lastly, if you are on your local machine, intiate the server
 ### Summary
 Copy the following chunk of code and run (paste) it where you want to create this application
 
-    mv user-manager user-manager-copy &&
+    mv user-manager user-manager-copy || true &&
     git clone https://github.com/theHilkiah/user-manager.git &&
     cd user-manager &&
     composer update &&
