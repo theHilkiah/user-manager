@@ -20,7 +20,7 @@ $activeLink = function($link, $class = 'active'){
   <li class="nav-item">
     <a class="nav-link{{$activeLink($link = 'admin/system/updates')}}" href="/{{ $link }}">
       <span data-feather="file-text"></span>
-      Updates <button class="btn btn-xs">data: <span class="badge badge-primary float-right">5</span></button>
+      Updates <span class="badge badge-primary float-right">5</span>
     </a>
   </li>
   @if(($upgrades = request('upgrades')))
