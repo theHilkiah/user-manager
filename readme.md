@@ -46,7 +46,7 @@ Lastly, if you are on your local machine, intiate the server
 ### Summary
 
 Copy the following chunk of code and run (paste) it where you want to create this application:
-NOTE: change the root username and empty password to match your settings
+NOTE: You can change the mysql database username in `-u'root'` to `-u'yourusername'` and if you use a password, change it to `-u'yourusername' -p'yourpassword'`
 
     mv user-manager user-manager-copy || true &&
     git clone https://github.com/theHilkiah/user-manager.git &&
@@ -55,7 +55,8 @@ NOTE: change the root username and empty password to match your settings
     npm i npm@latest -g &&
     npm install &&
     npm run dev &&
-    echo "create database usrmngrdb01" | mysql -u'root' -p'' &&
+    echo "drop database usrmngrdb01" | mysql -u'root' &&
+    echo "create database usrmngrdb01" | mysql -u'root' &&
     php artisan key:generate &&
     php artisan migrate:refresh --seed &&
     php artisan module:seed &&
