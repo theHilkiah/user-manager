@@ -1,8 +1,8 @@
-<p align="center">
+# User Manager Pro
+
+<p style="text-center">
 <img src="https://pavement.engineering.asu.edu/wp-content/uploads/2012/12/Holbrook-Asphalt-logo2-300x126.png">
 </p>
-
-# User Manager Pro
 
 A web application used to manage users
 
