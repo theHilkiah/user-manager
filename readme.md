@@ -30,7 +30,7 @@ NOTE: You can change the mysql database username in `-u'root'` to `-u'youruserna
     npm i npm@latest -g &&
     npm install &&
     npm run dev &&
-    echo "drop database usrmngrdb01" | mysql -u'root' &&
+    echo "drop database if exists usrmngrdb01" | mysql -u'root' &&
     echo "create database usrmngrdb01" | mysql -u'root' &&
     php artisan key:generate &&
     php artisan migrate:refresh --seed &&
@@ -52,7 +52,8 @@ If this doesn't work, you can break it down like so:
 
 Make sure the database here is created according to the config/database.php or .env file.
 
-    echo "create database usrmngrdb01" | mysql -u'root' -p''
+    echo "drop database if exists usrmngrdb01" | mysql -u'root' &&
+    echo "create database usrmngrdb01" | mysql -u'root'
 
 NOTE: If you have a you can change your username from 'root' to your own and (add -p password) if you have a password to match your settings on your mysql
 
@@ -67,23 +68,29 @@ Then copy and run the following:
     php artisan serve --port=8888
     
 ### Step-by-step Install
-Either download using the button above or use the command line to clone this to your application environment:
-
+Either download using the button above to the location you want the application to live; Or, use the command line to clone this to your application environment:
+    
+    mv user-manager user-manager-copy || true &&
     git clone https://github.com/theHilkiah/user-manager.git
 
 Then, make sure you run the composer update to get all the vendor packages
 
     composer update
 
-And, if you are using any node packages, or intend to run npm the do:
+And, if you are using any node packages, or intend to run npm the update npm and install npm packages like so:
 
     npm i npm@latest -g && npm install
 
 After that, you should generate an ecnryption key for the application:
 
     php artisan key:generate
+    
+If you database is set then match information in .env or in config/database.php or use the following command to change
 
-Now, make sure your database is created here based on the database config file,Finally, run all the migrations to build the databases
+    echo "drop database if exists usrmngrdb01" | mysql -u'root' &&
+    echo "create database usrmngrdb01" | mysql -u'root'
+
+Finally, run all the migrations to build the databases
 
     php artisan migrate --seed && php artisan module:seed
 
@@ -91,7 +98,7 @@ Lastly, if you are on your local machine, intiate the server
 
     php artisan serve --port=8888
 
-.... More information to come ...
+.... More instructions to come ...
 
 
 ## License
