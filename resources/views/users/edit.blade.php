@@ -17,33 +17,33 @@
                     @method('PUT')
 
                     <div class="form-group">
-                        <label for="email">Full Name</label>
+                        <label class="inline-label" for="email">Full Name</label>
                         <input type="text" class="form-control" name="name" value="{{ $User->name ?? old('name') }}">
                     </div>
                     <div class="form-group">
-                        <label for="email">Email Address</label>
+                        <label class="inline-label" for="email">Email Address</label>
                         <input type="text" class="form-control" name="email" value="{{ $User->email ?? old('email') }}">
                     </div>
                     <div class="form-group">
-                        <label for="email">Phone Number</label>
+                        <label class="inline-label" for="email">Phone Number</label>
                         <input type="text" class="form-control" name="phone" value="{{ $User->phone ?? old('phone') }}">
                     </div>
                 </fieldset>
                 <hr>
                 <fieldset class="card-body collapse" id="password-changer" disabled>
                     <div class="form-group">
-                        <label for="password">Current Password</label>
+                        <label class="inline-label" for="password">Current Password</label>
                         <input type="password" class="form-control" name="old_password" value="************************">
                     </div>
                     <div class="form-group">
-                        <label for="password">New Password</label>
+                        <label class="inline-label" for="password">New Password</label>
                         <input type="password" class="form-control" name="password" value="">
                         @if($errors->has('oldpass'))
                             <span class="help-block text-danger">{{ $errors->first() }}</span>
                         @endif
                     </div>
                     <div class="form-group">
-                        <label for="password_confirmation">Retype Password</label>
+                        <label class="inline-label" for="password_confirmation">Retype Password</label>
                         <input type="password" class="form-control" name="password_confirmation" value="">
                     </div>
                 </fieldset>
@@ -53,7 +53,7 @@
                             <a href="#password-changer" data-toggle="collapse">Change/hide Password</a>
                         </div>
                         <div class="col">
-                            <button class="btn btn-block" name="type" value="login">Submit</button>
+                            <button class="btn btn-primary btn-block" name="type" value="login">Submit</button>
                         </div>
                     </div>
                 </fielset>
@@ -74,25 +74,25 @@
                                 </div>
                             </div>
                             <div class="col">
-                                <label for="name">Bio</label>
-                                <textarea class="form-control" type="text" name="bio" rows="8">{{ $User->profile->bio ?? old('bio') }}</textarea>
+                                <label class="inline-label" for="name">Bio</label>
+                                <textarea class="form-control" type="text" name="bio" rows="5">{{ $User->profile->bio ?? old('bio') }}</textarea>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="name">Address</label>
+                            <label class="inline-label" for="name">Address</label>
                             <textarea class="form-control" name="address">{{ $User->profile->address ?? old('address') }}</textarea>
                         </div>
                         <div class="form-group row">
                             <div class="col">
-                                <label for="name">City</label>
+                                <label class="inline-label" for="name">City</label>
                                 <input class="form-control" type="text" name="city" value="{{ $User->profile->city ?? old('city') }}">
                             </div>
                             <div class="col-md-2">
-                                <label for="name">State</label>
+                                <label class="inline-label" for="name">State</label>
                                 <input class="form-control" type="text" name="state" value="{{ $User->profile->state ?? old('state') }}">
                             </div>
                             <div class="col-md-3">
-                                <label for="nae">Zip</label>
+                                <label class="inline-label" for="nae">Zip</label>
                                 <input class="form-control" type="text" name="zip" value="{{ $User->profile->zip ?? old('zip') }}">
                             </div>
                         </div>
@@ -111,5 +111,17 @@
                 </form>
             </div>
         </div>        
-
+@push('scripts')
+<script>
+    var previewFile = function(event, _id_) {
+        console.log(event, _id_);
+       var reader = new FileReader();
+       reader.onload = function(){
+         var output = document.querySelector(_id_);
+         output.src = reader.result;
+       };
+       reader.readAsDataURL(event.target.files[0]);
+     };
+</script>
+@endpush
     @endsection

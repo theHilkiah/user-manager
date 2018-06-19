@@ -10,8 +10,9 @@ class Media extends Model
 {
     protected $fillable = [
         "user_id",
-        "uploader",
+        "uploader_id",
         "file",
+        "title",
         "info",
     ];
 
@@ -22,7 +23,9 @@ class Media extends Model
 
     public function Uploader()
     {
-      return $this->belongsTo(User::class, 'uploader');
+      $q = $this->belongsTo(User::class, 'uploader_id');
+      dump($q->toSql(), $q->getBindings());
+      return $q;
     }
 
     public function getPreviewAttribute()
@@ -31,9 +34,11 @@ class Media extends Model
         case 'image':
           return 'src="'.asset('storage/'.$this->file).'"';
           break;
-
+        case 'video':
+          return 'src="//placehold.it/50X50?text=VIDEO"';
+          break;
         default:
-          return 'src="//placehold.it/32X32?text=FILE"';
+          return 'src="//placehold.it/50X50?text=FILE"';
           break;
       }
     }
@@ -42,8 +47,8 @@ class Media extends Model
     {
         $images = ['jpg', 'png', 'svg'];
         $videos = ['mov', 'swf'];
-        $parts   = explode(".", $this->file);
-        $extn  = array_pop($parts);
+        $parts  = explode(".", $this->file);
+        $extn   = array_pop($parts);
         if(in_array($extn, $images)) return 'image';
         if(in_array($extn, $videos)) return 'video';
         return 'file';

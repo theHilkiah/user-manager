@@ -15,9 +15,13 @@ mix.js('resources/assets/js/app.js', 'public/js')
    .sass('resources/assets/sass/app.scss', 'public/css');
 
 mix.js([
-     'modules/Admin/Resources/assets/js/init.js',
-    'modules/Admin/Resources/assets/js/dashboard.js'
+     'resources/assets/js/init.js',
+     'resources/assets/js/form.js',
+     'resources/assets/js/scripts.js'
 ], 'public/js/admin.js')
 .styles([
-    'modules/Admin/Resources/assets/css/dashboard.css'
+    'resources/assets/css/theme.css',    
+    'resources/assets/css/admin.css',
+    'resources/assets/css/styles.css',
+    'resources/assets/css/forms.css'
 ], 'public/css/admin.css');

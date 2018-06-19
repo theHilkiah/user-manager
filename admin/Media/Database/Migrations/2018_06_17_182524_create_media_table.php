@@ -16,8 +16,9 @@ class CreateMediaTable extends Migration
         Schema::create('media', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
-            $table->integer('uploader')->default(-1);
             $table->string('file');
+            $table->integer('uploader_id')->default(-1);
+            $table->string('title')->nullable();
             $table->text('info')->nullable();
             $table->timestamps();
         });

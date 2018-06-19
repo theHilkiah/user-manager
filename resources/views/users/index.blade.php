@@ -3,8 +3,8 @@
 @push('styles')
 <style>
     .shadowed {box-shadow: 1px 1px 1rem 1px }
-    label {padding-left: 0.75rem; }
-    label + input { margin-top: -2rem; padding-top: 1.25rem !important; height: auto}
+    .inline-label {padding-left: 0.75rem; }
+    .inline-label + .form-control { margin-top: -2rem!important; padding-top: 1.25rem !important; height: auto}
     [readonly] {border: none; background:transparent; outline: none}
 </style>
 @endpush
@@ -72,6 +72,19 @@
         </form>
     </div>
 </div>
+@push('scripts')
+<script>
+    var previewFile = function(event, _id_) {
+        console.log(event, _id_);
+       var reader = new FileReader();
+       reader.onload = function(){
+         var output = document.querySelector(_id_);
+         output.src = reader.result;
+       };
+       reader.readAsDataURL(event.target.files[0]);
+     };
+</script>
+@endpush
 @endsection
 @section('scripts')
     <script src="https://unpkg.com/vue/dist/vue.js"></script>

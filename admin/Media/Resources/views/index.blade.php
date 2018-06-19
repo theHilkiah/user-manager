@@ -7,8 +7,8 @@
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Preview</th>
-                    <th scope="col">Path</th>
-                    <th scope="col">Owner</th>
+                    <th scope="col">File Path</th>
+                    <th scope="col">File Owner</th>
                     <th scope="col">Uploader</th>
                     <th scope="col">Type</th>
                 </tr>
@@ -17,7 +17,7 @@
                 @foreach ($Media as $mda)
                     <tr>
                         <td>{{$mda->id}}</td>
-                        <td>{{$mda->preview}}</td>
+                        <td><img class="img-thumb" {!!$mda->preview!!}></td>
                         <td>{{$mda->file}}</td>
                         <td>{{$mda->user->name}}</td>
                         <td>{{$mda->user->uploader->name ?? ''}}</td>

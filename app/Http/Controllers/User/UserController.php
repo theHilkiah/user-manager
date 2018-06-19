@@ -118,7 +118,7 @@ class UserController extends Controller
                 $User->update($request->all());
             } elseif($id == 'account' && $request->type == 'profile'){
                 $Pro  = $User->profile ?? Profile::create(['user_id' => $ID]);
-                if($photo) $request->merge(compact('photo'));
+                if(isset($photo)) $request->merge(compact('photo'));
                 $Pro->update($request->input());
             }
             return back()->withSuccess('Succsssfully updated records!');

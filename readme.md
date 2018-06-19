@@ -24,6 +24,10 @@ Then, make sure you run the composer update to get all the vendor packages
 
     `composer update`
 
+And, if you are using any node packages, or intend to run npm the do:
+
+    `npm install`
+
 After that, you should generate an ecnryption key for the application:
 
     `php artisan key:generate`
