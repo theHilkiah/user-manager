@@ -19,33 +19,8 @@ To run this application, you need to have the following:
 
 ## Installation
 
-Either download using the button above or use the command line to clone this to your application environment:
-
-    git clone https://github.com/theHilkiah/user-manager.git
-
-Then, make sure you run the composer update to get all the vendor packages
-
-    composer update
-
-And, if you are using any node packages, or intend to run npm the do:
-
-    npm i npm@latest -g && npm install
-
-After that, you should generate an ecnryption key for the application:
-
-    php artisan key:generate
-
-Now, make sure your database is created here based on the database config file,Finally, run all the migrations to build the databases
-
-    php artisan migrate --seed && php artisan module:seed
-
-Lastly, if you are on your local machine, intiate the server
-
-    php artisan serve --port=8888
-
-### Summary
-
-Copy the following chunk of code and run (paste) it where you want to create this application:
+### Quick Install
+If you love the command prompt, and you have git installed and all the requirements above; then, copy the following chunk of code and run (paste) it where you want to create this application:
 NOTE: You can change the mysql database username in `-u'root'` to `-u'yourusername'` and if you use a password, change it to `-u'yourusername' -p'yourpassword'`
 
     mv user-manager user-manager-copy || true &&
@@ -64,7 +39,6 @@ NOTE: You can change the mysql database username in `-u'root'` to `-u'youruserna
     php artisan storage:link &&
     start "" "http://127.0.0.1:8888" &&
     php artisan serve --port=8888
-
 
 If this doesn't work, you can break it down like so:
 
@@ -91,6 +65,34 @@ Then copy and run the following:
     php artisan storage:link &&
     start "" "http://127.0.0.1:8888" &&
     php artisan serve --port=8888
+    
+### Step-by-step Install
+Either download using the button above or use the command line to clone this to your application environment:
+
+    git clone https://github.com/theHilkiah/user-manager.git
+
+Then, make sure you run the composer update to get all the vendor packages
+
+    composer update
+
+And, if you are using any node packages, or intend to run npm the do:
+
+    npm i npm@latest -g && npm install
+
+After that, you should generate an ecnryption key for the application:
+
+    php artisan key:generate
+
+Now, make sure your database is created here based on the database config file,Finally, run all the migrations to build the databases
+
+    php artisan migrate --seed && php artisan module:seed
+
+Lastly, if you are on your local machine, intiate the server
+
+    php artisan serve --port=8888
+
+.... More information to come ...
+
 
 ## License
 User Manager Pro is an open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
