@@ -56,7 +56,7 @@ Copy the following chunk of code and run (paste) it where you want to create thi
 
 Make sure the database here is created according to the config/database.php or .env file.
 
-    echo "create database usrmngrdb02" | mysql -u'root' -p''
+    echo "create database usrmngrdb01" | mysql -u'root' -p''
 
 NOTE: If you have a you can change your username from 'root' to your own and (add -p password) if you have a password to match your settings on your mysql
 
