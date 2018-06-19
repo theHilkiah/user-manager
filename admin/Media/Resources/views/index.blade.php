@@ -20,7 +20,7 @@
                         <td><img class="img-thumb" {!!$mda->preview!!}></td>
                         <td>{{$mda->file}}</td>
                         <td>{{$mda->user->name}}</td>
-                        <td>{{$mda->user->uploader->name ?? ''}}</td>
+                        <td>{{$mda->uploader->name ?? 'System'}}</td>
                         <td>{{$mda->type}}</td>
                     </tr>
                 @endforeach

@@ -17,7 +17,7 @@ class CreateMediaTable extends Migration
             $table->increments('id');
             $table->integer('user_id');
             $table->string('file');
-            $table->integer('uploader_id')->default(-1);
+            $table->integer('uploader_id')->default(1);
             $table->string('title')->nullable();
             $table->text('info')->nullable();
             $table->timestamps();

@@ -1,0 +1,8 @@
+.blockquote {
+    border-left: 3px solid #ddd;
+    padding-left: 5px;
+    font-size: 1rem;
+}
+.blockquote.text-right {
+    padding-right: 5px;
+}

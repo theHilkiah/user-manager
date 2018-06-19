@@ -9,7 +9,10 @@
 .inline-label+.form-control {
     margin-top: -2rem !important;
     padding-top: 1.25rem !important;
-    height: auto
+    height: auto !important;
+}
+.inline-label+select.form-control{
+    padding-left: 0.5rem;
 }
 
 [readonly] {

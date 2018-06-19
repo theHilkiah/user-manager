@@ -95,14 +95,15 @@ class UsersController extends Controller
         $request->merge(compact('user_id'));
         $author_id = $request->user()->id;
         $identity = compact('user_id', 'author_id');
+        // dd($request->all());
 
         try {
-            if($request->notes == 'yes'){
+            if($request->active == 'notes'){
                 $Note = Notes::create($identity);
                 $Note->fill($request->all())->save();
             } else {
                 $User = User::find($user_id);
-                $User->update($request->all());
+                $User->fill($request->all())->save();
             }
             return back()->withSuccess('Successfully updated records');
         } catch (\Exception $e) {

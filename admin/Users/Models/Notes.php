@@ -11,6 +11,8 @@ class Notes extends Model
         "user_id", "author_id", 'type', 'title', 'content'
     ];
 
+    protected $casts = ['type' => "int"];
+
     public function getSignatureAttribute()
     {
         $date = $this->updated_at->Format('m/d/Y');

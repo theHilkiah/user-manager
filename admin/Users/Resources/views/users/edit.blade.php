@@ -74,21 +74,27 @@ display: inline-block;
       <div class="card-body">
         <div class="row">
           <div class="col">
-            <p for="">Add Notes</p>
+            <p for="">ADD NEW NOTES</p>
             @include('users::users.create.notes')
           </div>
           <div class="col">
             <p>CURRENT NOTES</p>
             @if($Notes->count())
-              <ul>
+              {{--  <ul>  --}}
                 @foreach ($Notes->sortByDesc('created_at') as $note)
-                  <li>
+                <blockquote class="blockquote">
+                  <strong>{{ $note->title }}</strong>
+                  <p class="mb-0">{!! $note->content !!}</p>
+                  <footer class="blockquote-footer"><cite title="Source Title">{{ $note->signature }}</cite></footer>
+                </blockquote>  
+                
+                {{--  <li>
                     <strong>{{ $note->title }}</strong><br>
                     {{ $note->content }}<br>
                     <small>- {{ $note->signature }}</small>
-                  </li>
+                  </li>  --}}
                 @endforeach
-              </ul>
+              {{--  </ul>  --}}
             @else
               - There are no notes on {{$User->name}} currently
             @endif
@@ -108,13 +114,14 @@ display: inline-block;
           <div class="col">
             <p>UPLOADED FILES</p>
             @if($User->media->count())
-              <ul>
+              <table class="table">
                 @foreach ($User->media->sortByDesc('created_at') as $mda)
-                  <li>
-                    {{$mda->url}}
-                  </li>
+                  <tr class="border-bottom">
+                    <td><img class="img-thumb-64" {!!$mda->preview!!}></td>
+                    <td>{{$mda->file}}<br/>{{$mda->title}}</td>
+                  </tr>
                 @endforeach
-              </ul>
+              </table>
             @else
               - There are no files uploaded for {{$User->name}} currently
             @endif

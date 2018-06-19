@@ -38,15 +38,12 @@ class MediaController extends Controller
       // dd($request);
         try {
             $uploader = $request->user()->id;
-            $request->merge(compact('uploader'));
+            $request->merge(compact('uploader_id'));
             $media = $request->file;
             $name = $media->getClientOriginalName();
             $uDir = 'users/'.$request->user_id;
-            // $path = storage_path($uDir.'/'.$name);
             $file = $media->storeAs($uDir, $name);
-            // $data = $request->except('file');
             $request->merge(compact('file'));
-            // $data = array_merge($data, compact('file'));
             // dd($request->input());
             $New = Media::create($request->input());
             return $uDir.'/'.$name;

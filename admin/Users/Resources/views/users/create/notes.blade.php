@@ -5,14 +5,14 @@
                 <input type="text" name="title" class="form-control" value="{{ old('title') }}" placeholder="enter notes title here...">
             </div>
             <div class="form-group">
-                <textarea name="content" class="form-control" placeholder="add notes content here..." rows="5"></textarea>
+                <textarea name="content" class="form-control" placeholder="add notes content here..." rows="5" required>{{old('content')}}</textarea>
             </div>
             <div class="form-group row">
                 <div class="col">
                     <select name="type" class="form-control">
-                        <option value="">(Visibility)</option>
-                        <option value="1">User Can See Note</option>
-                        <option value="2">Visible to Writer</option>
+                        <option value="1">(Visibility)</option>
+                        <option value="1">Visible to Writer</option>
+                        <option value="2">Visible to User</option>
                         <option value="3">Everyone Can See</option>
                     </select>
                 </div>

@@ -24,7 +24,7 @@ class Media extends Model
     public function Uploader()
     {
       $q = $this->belongsTo(User::class, 'uploader_id');
-      dump($q->toSql(), $q->getBindings());
+      // dump($q->toSql(), $q->getBindings());
       return $q;
     }
 
@@ -38,20 +38,35 @@ class Media extends Model
           return 'src="//placehold.it/50X50?text=VIDEO"';
           break;
         default:
-          return 'src="//placehold.it/50X50?text=FILE"';
+          $EXTN = strtoupper($this->extension);
+          return 'src="//placehold.it/50X50?text='.$EXTN.'"';
           break;
       }
     }
 
-    public function getTypeAttribute()
+    public function getExtensionAttribute()
+    {
+        return pathinfo($this->file, PATHINFO_EXTENSION);
+     }
+
+     public function getTypeAttribute()
     {
         $images = ['jpg', 'png', 'svg'];
         $videos = ['mov', 'swf'];
         $parts  = explode(".", $this->file);
-        $extn   = array_pop($parts);
+        $extn   = $this->extension;
         if(in_array($extn, $images)) return 'image';
         if(in_array($extn, $videos)) return 'video';
         return 'file';
+     }
+
+     public function getTitleAttribute($title)
+     {
+       if(!empty($title)) return ucwords($title);
+       $name = kebab_case(basename($this->file));
+       $remove = ["." . $this->extension, "-"];
+       return ucwords(str_replace($remove, " ", $name));
+        
      }
 
      public function getUrlAttribute()
