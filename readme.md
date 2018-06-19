@@ -46,6 +46,7 @@ Lastly, if you are on your local machine, intiate the server
 ### Summary
 
     `
+    cp user-manager user-manager-copy -rf &&
     git clone https://github.com/theHilkiah/user-manager.git &&
     cd user-manager &&
     composer update &&
