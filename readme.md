@@ -17,7 +17,8 @@ To run this application, you need to have the following:
 
 ## Installation
 Either download using the button above or use the command line to clone this to your application environment:
-- git clone https://github.com/theHilkiah/user-manager.git
+
+    `git clone https://github.com/theHilkiah/user-manager.git`
 
 Then, make sure you run the composer update to get all the vendor packages
 
