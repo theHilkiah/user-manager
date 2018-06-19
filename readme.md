@@ -1,7 +1,7 @@
 # User Manager Pro
 
 <p style="text-center">
-<img src="https://pavement.engineering.asu.edu/wp-content/uploads/2012/12/Holbrook-Asphalt-logo2-300x126.png">
+<img src="//placeholt.it/128X128?text=UsrMgrPro">
 </p>
 
 A web application used to manage users
