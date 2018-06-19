@@ -50,10 +50,12 @@ Copy the following chunk of code and run (paste) it where you want to create thi
     git clone https://github.com/theHilkiah/user-manager.git &&
     cd user-manager &&
     composer update &&
-    npm i npm@latest -g && npm install &&
+    npm i npm@latest -g && 
+    npm install &&
     php artisan key:generate &&
     
-Make sure the database here is created according to the config/database.php or .env file. Then copy and run the following:
+Make sure the database here is created according to the config/database.php or .env file. 
+Then copy and run the following:
     
     php artisan migrate:refresh --seed && 
     php artisan module:seed &&
