@@ -15,7 +15,23 @@
   @yield('styles')
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   <link rel="stylesheet" href="https://bootswatch.com/4/{{$User->settings->data['theme'] ?? request('theme') ?? 'cosmo'}}/bootstrap.min.css">
-  <style>html,body{height: 100%; box-sizing: border-box;}</style>
+  <style>html,body{
+    height: 100%; box-sizing: border-box;
+  }
+   .img-thumb {
+    max-height: 32px;
+    max-width: 32px;
+    border: 2px solid #cccc;
+    border-radius: 5px;
+}
+.img-thumb-64 {
+    max-height: 64px;
+    max-width:64px;
+    border: 2px solid #cccc;
+    border-radius: 5px;
+}
+
+  </style>
   @stack('styles')
 </head>
 <body>
