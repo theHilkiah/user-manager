@@ -3,9 +3,11 @@
     padding-left: 5px;
     font-size: 1rem;
 }
+
 .blockquote.text-right {
     padding-right: 5px;
 }
+
 body {
     font-size: .875rem;
 }
@@ -15,6 +17,7 @@ body {
     height: 16px;
     vertical-align: text-bottom;
 }
+
 
 /*
  * Sidebar
@@ -73,6 +76,7 @@ body {
     text-transform: uppercase;
 }
 
+
 /*
  * Content
  */
@@ -81,6 +85,7 @@ body {
     padding-top: 3rem;
     /* Space for fixed navbar */
 }
+
 
 /*
  * Navbar
@@ -99,6 +104,8 @@ body {
     border-width: 0;
     border-radius: 0;
 }
+
+
 /*
  * Utilities
  */
@@ -123,28 +130,34 @@ body {
     border: 2px solid #cccc;
     border-radius: 5px;
 }
+
 .img-thumb-64 {
     max-height: 64px;
-    max-width:64px;
+    max-width: 64px;
     border: 2px solid #cccc;
     border-radius: 5px;
 }
-.img-thumb-x64{
+
+.img-thumb-x64 {
     max-width: 64px;
 }
-.img-thumb-y64{
+
+.img-thumb-y64 {
     max-height: 64px;
 }
+
 .img-thumb-128 {
     max-height: 64px;
-    max-width:64px;
+    max-width: 64px;
     border: 2px solid #cccc;
     border-radius: 5px;
 }
-.img-thumb-x128{
+
+.img-thumb-x128 {
     max-width: 128px;
 }
-.img-thumb-y128{
+
+.img-thumb-y128 {
     max-height: 128px;
 }
 
@@ -171,7 +184,8 @@ img[src*=".rtf"]>div::before {
     padding-top: 1.25rem !important;
     height: auto !important;
 }
-.inline-label+select.form-control{
+
+.inline-label+select.form-control {
     padding-left: 0.5rem;
 }
 
@@ -180,6 +194,7 @@ img[src*=".rtf"]>div::before {
     background: transparent;
     outline: none
 }
+
 .form-control-dark {
     color: #fff;
     background-color: rgba(255, 255, 255, .1);
@@ -190,7 +205,12 @@ img[src*=".rtf"]>div::before {
     border-color: transparent;
     box-shadow: 0 0 0 3px rgba(255, 255, 255, .25);
 }
+
 .select2-container {
     width: 100% !important;
     border-color: #dddddd;
+}
+
+.btn .btn-xs {
+    padding: 0;
 }

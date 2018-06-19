@@ -3,15 +3,63 @@ $activeLink = function($link, $class = 'active'){
   return request()->is("$link*")? " $class": "";
 };
 @endphp
-<ul class="nav flex-column">
+<h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+  <span>DASHBOARD</span>
+  <a class="d-flex align-items-center text-muted" href="#">
+    <span data-feather="plus-circle"></span>
+  </a>
+</h6>
+<ul class="nav flex-column mb-2">
   <li class="nav-item">
     <a class="nav-link{{$activeLink($link = 'admin/dashboard')}}" href="/{{ $link }}">
       <span data-feather="home"></span>
-      Dashboard
+      My Dash
       <span class="sr-only">(current)</span>
     </a>
   </li>
+  <li class="nav-item">
+    <a class="nav-link{{$activeLink($link = 'admin/system/updates')}}" href="/{{ $link }}">
+      <span data-feather="file-text"></span>
+      Updates <button class="btn btn-xs">data: <span class="badge badge-primary float-right">5</span></button>
+    </a>
+  </li>
+  @if(($upgrades = request('upgrades')))
+  <li class="nav-item">
+    <a class="nav-link{{$activeLink($link = 'admin/system/upgrades')}}" href="/{{ $link }}">
+      <span data-feather="file-text"></span>
+      Upgrades <span class="badge badge-primary float-right">{{$upgrades}}</span>
+    </a>
+  </li>
+  @endif
 </ul>
+@can('view-modules', Modules\Account\Models::class)
+<h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+  <span>CONTENT</span>
+  <a class="d-flex align-items-center text-muted" href="#">
+    <span data-feather="plus-circle"></span>
+  </a>
+</h6>
+<ul class="nav flex-column mb-2">
+  <li class="nav-item">
+    <a class="nav-link{{$activeLink($link = 'admin/pages')}}" href="/{{ $link }}">
+      <span data-feather="file-text"></span>
+      Pages
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link{{$activeLink($link = 'admin/blocks')}}" href="/{{ $link }}">
+      <span data-feather="file-text"></span>
+      Blocks
+    </a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link{{$activeLink($link = 'admin/media')}}" href="/{{ $link }}">
+      <span data-feather="file-text"></span>
+      Files
+    </a>
+  </li>
+</ul>
+@endcan
 @can('view-modules', Modules\Account\Models::class)
 <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
   <span>MODULES</span>
@@ -21,9 +69,9 @@ $activeLink = function($link, $class = 'active'){
 </h6>
 <ul class="nav flex-column mb-2">
   <li class="nav-item">
-    <a class="nav-link{{$activeLink($link = 'admin/media')}}" href="/{{ $link }}">
+    <a class="nav-link" href="#">
       <span data-feather="file-text"></span>
-      Files
+      Module 1
     </a>
   </li>
   <li class="nav-item">
