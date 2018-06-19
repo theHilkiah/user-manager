@@ -1,7 +1,7 @@
 # User Manager Pro
 
 <p style="text-center">
-<img src="//placeholt.it/128X128?text=UsrMgrPro">
+<img src="//placehold.it/128X128?text=UsrMgrPro">
 </p>
 
 A web application used to manage users
