@@ -60,7 +60,7 @@ Then copy and run the following:
     php artisan migrate:refresh --seed &&
     php artisan module:seed &&
     php artisan config:clear &&
-    start "" "http://127.0.0.1:8888" &
+    start "" "http://127.0.0.1:8888" &&
     php artisan serve --port=8888
 
 ## License
