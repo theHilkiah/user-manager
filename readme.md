@@ -20,19 +20,19 @@ Either download using the button above or use the command line to clone this to 
 - git clone https://github.com/theHilkiah/user-manager.git
 Then, make sure you run the composer update to get all the vendor packages
 
-    ````composer update```
+    `composer update`
 
 After that, you should generate an ecnryption key for the application:
 
-    ```php artisan key:generate```
+    `php artisan key:generate`
 
 Finally, run all the migrations to build the databases
 
-    ```php artisan migrate --seed && php artisan module:make```
+    `php artisan migrate --seed && php artisan module:make`
 
 Lastly, if you are on your local machine, intiate the server
 
-    ```php artisan serve --port=8888```
+    `php artisan serve --port=8888`
 
 
 ## License
