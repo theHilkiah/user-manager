@@ -91,7 +91,15 @@ module.exports = __webpack_require__(47);
 /***/ 46:
 /***/ (function(module, exports) {
 
-(function ($) {})(jQuery);
+(function ($) {
+   $(function () {
+      var clientSideForm = 'form.ajax-form,form.axios-form';
+
+      $(document).on('submit', clientSideForm, function (e) {
+         console.log(this, e);
+      });
+   });
+})(jQuery);
 
 /***/ }),
 
@@ -134,6 +142,16 @@ module.exports = __webpack_require__(47);
             });
         });
     });
+
+    var previewFile = function previewFile(event, _id_) {
+        console.log(event, _id_);
+        var reader = new FileReader();
+        reader.onload = function () {
+            var output = document.querySelector(_id_);
+            output.src = reader.result;
+        };
+        reader.readAsDataURL(event.target.files[0]);
+    };
 })(jQuery);
 
 /***/ })
