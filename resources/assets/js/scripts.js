@@ -34,4 +34,16 @@
             });
         });
     });
+
+    var previewFile = function(event, _id_)
+    {
+      console.log(event, _id_);
+      var reader = new FileReader();
+      reader.onload = function(){
+         var output = document.querySelector(_id_);
+         output.src = reader.result;
+      };
+      reader.readAsDataURL(event.target.files[0]);
+    };
+
 })(jQuery);

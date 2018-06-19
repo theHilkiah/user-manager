@@ -2,7 +2,7 @@
   <div class="card-body text-center">
     <picture>
       <source srcset="{{$photo = (auth()->user()->profile->photo ?? '//placehold.it/64X64?text=PHOTO')}}" type="image/svg+xml">
-      <img src="{{$photo}}" class="img-thumb-128 img-fluid img-thumbnail" alt="...">
+      <img src="{{$photo}}" class="img-thumb-y128 img-fluid img-thumbnail" alt="...">
     </picture>
     <div class="text-center">{{auth()->user()->name}}</div>
     <hr>

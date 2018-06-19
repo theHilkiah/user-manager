@@ -129,6 +129,24 @@ body {
     border: 2px solid #cccc;
     border-radius: 5px;
 }
+.img-thumb-x64{
+    max-width: 64px;
+}
+.img-thumb-y64{
+    max-height: 64px;
+}
+.img-thumb-128 {
+    max-height: 64px;
+    max-width:64px;
+    border: 2px solid #cccc;
+    border-radius: 5px;
+}
+.img-thumb-x128{
+    max-width: 128px;
+}
+.img-thumb-y128{
+    max-height: 128px;
+}
 
 img[src*=".rtf"] {
     display: none;
@@ -139,6 +157,7 @@ img[src*=".rtf"]>div::before {
     display: block;
     width: 100px;
 }
+
 .shadowed {
     box-shadow: 1px 1px 1rem 1px
 }

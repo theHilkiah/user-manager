@@ -16,9 +16,10 @@ use Faker\Generator as Faker;
 $factory->define(App\Models\Auth\User::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
-        'group_id' => -1,
+        'group_id' => [-1,1,2][mt_rand(0,2)],
         'email' => $faker->unique()->safeEmail,
         'phone' => $faker->phoneNumber,
+        'active' => (bool)mt_rand(0,1),
         'password' => bcrypt('secret'), // secret
         'remember_token' => str_random(10),
     ];
