@@ -36,6 +36,20 @@ display: inline-block;
           </div>
         @else
           <p class="my-3 text-center">This user has not yet activated this account! Updates are not yet available</p>
+          <form action="/admin/users/{{$User->id}}" method="POST">
+            @csrf
+            @method('DELETE')
+            <div class="text-center">
+              @php
+              $delete = '<div class="popover">Are you sure you want to remove'.$User->name.'?';
+              $delete .= '<button class="btn btn-sm btn-danger" type="submit" name="_method" value="DELETE">DELETE</button>';
+              $delete .= '<a href=\"#delete-user\" class=\"btn btn-sm btn-info\">NO</a>';
+              $delete .= '</div>';
+              echo '<button class="btn btn-sm btn-danger" type="submit" disabled>DELETE</button>';
+              @endphp
+              {{-- <a href="#delete-user" class="btn btn-danger" data-placement="top" data-html="true"  data-toggle="popover" data-content={!!$delete!!}">DELETE USER?</a> --}}
+            </div>
+          </form>
         @endif
       </div>
     </div>
