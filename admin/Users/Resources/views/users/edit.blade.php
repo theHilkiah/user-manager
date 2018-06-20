@@ -45,8 +45,9 @@ display: inline-block;
       @php
         $request = request('active') ?? 'notes';
         $active = function($tab, $extra = '')use($request){
-          $active = $request == $tab? ' active': '';
-          return $active .= $active != ''? ' '.$extra: '';
+          $class = $request == $tab? ' active': '';
+          if($extra !== '') $class .= " ".$extra;
+          return $class;
         };
 
       @endphp
@@ -80,21 +81,13 @@ display: inline-block;
           <div class="col">
             <p>CURRENT NOTES</p>
             @if($Notes->count())
-              {{--  <ul>  --}}
                 @foreach ($Notes->sortByDesc('created_at') as $note)
                 <blockquote class="blockquote">
                   <strong>{{ $note->title }}</strong> - <small>{{$note->type}}</small>
                   <p class="mb-0 truncate w-sm" data-toggle="tooltip" data-trigger="hover" data-title="{!! $note->content !!}">{!! $note->content !!}</p>
                   <footer class="blockquote-footer"><cite title="Source Title">{{ $note->signature }}</cite></footer>
                 </blockquote>
-
-                {{--  <li>
-                    <strong>{{ $note->title }}</strong><br>
-                    {{ $note->content }}<br>
-                    <small>- {{ $note->signature }}</small>
-                  </li>  --}}
                 @endforeach
-              {{--  </ul>  --}}
             @else
               - There are no notes on {{$User->name}} currently
             @endif
@@ -127,10 +120,12 @@ display: inline-block;
                 </thead>
                 <tbody>
                   @foreach ($User->media->sortByDesc('created_at') as $mda)
-                  @php $file = '<img class="img-thumb-128" '.$mda->preview .'>'; @endphp
+                  @php $file = '<img class="img-thumbnail" '. $mda->preview .'>'; @endphp
                   <tr>
                     <td>
-                      <a href="#file-{{ $mda->id }}" data-toggle="popover" data-html="true" data-trigger="hover" data-content="{{ $file }}">{{ $mda->title }}</a>
+                      <a href="#file-{{ $mda->id }}" data-toggle="popover" data-html="true" data-trigger="hover" data-content="{{ $file }}">
+                        <img class="img-thumb-128" {!! $mda->preview !!}>
+                      </a>
                     </td>
                     <td>{{$mda->file}}{{$mda->title}}</td>
                   </tr>

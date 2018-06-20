@@ -32,7 +32,7 @@
             <select name="status" class="form-control" required>
                 <option value="">(Select Status)</option>
                 @foreach (['pending', 'approved', 'suspended'] as $key => $status)
-                    @php $selected = (@$group->status == @$status)? ' selected': ''; @endphp
+                    @php $selected = (@$group->status == @$key)? ' selected': ''; @endphp
                     <option value="{{$key}}"{{$selected}}>{{ ucwords($status)}}</option>
                 @endforeach
             </select>

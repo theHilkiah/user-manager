@@ -48,7 +48,7 @@
      <div class="card  border-primary text-primary">
          <div class="card-header">Messages</div>
          <div class="card-body"> 
-             @php $Notes = $User->notes->where('type', 2)->where('user_id', auth()->id()); @endphp
+             @php $Notes = $User->notes()->where('type', 2)->get(); @endphp
              @if ($Notes && ($count = $Notes->count()))
              <a href="#messagesBox" data-toggle="modal">
                  {{ $count }} 
@@ -57,18 +57,20 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="messagesBoxLabel">Modal title</h5>
+                    <h5 class="modal-title" id="messagesBoxLabel">Messages & Notes</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <ul>
-                        @foreach ($Notes as $note)
-                        <li class="list-group-item">{{ $note->label }}</li>
-                        @endforeach
-                    </ul>
-                </div>
+                    @foreach ($Notes as $note)
+                        <blockquote class="blockquote">
+                            <strong>{{ $note->title }}</strong>
+                            <p class="mb-0 truncate w-sm" data-toggle="tooltip" data-trigger="hover" data-title="{!! $note->content !!}">{!! $note->content !!}</p>
+                            <footer class="blockquote-footer"><cite title="Source Title">{{ $note->signature }}</cite></footer>
+                        </blockquote>
+                    @endforeach
+            </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-primary">Save changes</button>
