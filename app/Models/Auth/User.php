@@ -50,13 +50,20 @@ class User extends Authenticatable
 
     public function getIsAdminAttribute()
     {
-        return $this->group_id == 1;
+        $group = $this->group_id;
+        return in_array($group, [1]);
     }
 
     public function getIsMemberAttribute()
     {
         $group = $this->group_id;
-        return $group == 1 || $group == 2;
+        return in_array($group, [2]);
+    }
+
+    public function getIsVendorAttribute()
+    {
+        $group = $this->group_id;
+        return in_array($group, [3]);
     }
 
     public function getFnameAttribute()

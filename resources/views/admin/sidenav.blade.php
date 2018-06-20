@@ -121,6 +121,7 @@ $activeLink = function($link, $class = 'active'){
 </ul>
 
 @endcan
+@can ('edit-settings', auth()->user())
 <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
   <span>Settings</span>
   <a class="d-flex align-items-center text-muted" href="#">
@@ -128,14 +129,12 @@ $activeLink = function($link, $class = 'active'){
   </a>
 </h6>
 <ul class="nav flex-column mb-2">
-  @can ('modify-users', auth()->user())
     <li class="nav-item">
       <a class="nav-link" href="#">
         <span data-feather="file-text"></span>
         Website
       </a>
     </li>
-  @endcan
 
   <li class="nav-item">
     <a class="nav-link" href="#">
@@ -150,3 +149,4 @@ $activeLink = function($link, $class = 'active'){
     </a>
   </li>
 </ul>
+@endcan

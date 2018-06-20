@@ -1,4 +1,4 @@
-@extends(auth()->user()->isAdmin? 'layouts.admin' :'layouts.app')
-@section(auth()->user()->isAdmin? 'layout': 'content')
+@extends(auth()->user()->isVendor? 'layouts.app' :'layouts.admin')
+@section(auth()->user()->isVendor? 'content': 'layout')
     @yield('content')
 @endsection
