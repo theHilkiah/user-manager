@@ -5,7 +5,7 @@ namespace Admin\Users\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
-use Admin\Users\Models\Group;
+use Admin\Users\Models\{Group,Access};
 use App\Models\Auth\User;
 
 class GroupsController extends Controller
@@ -17,6 +17,8 @@ class GroupsController extends Controller
     public function index()
     {
         $data['Groups'] = Group::all();
+        $data['Permissions'] = Access::all();
+
         return view('users::groups.index', $data);
     }
 
@@ -55,6 +57,8 @@ class GroupsController extends Controller
      */
     public function edit($id)
     {
+        $data['Permissions'] = Access::all();
+
         $data['Groups'] = $Group = Group::all();
         $data['Group'] = $Group->find($id);
         return view('users::groups.edit', $data);

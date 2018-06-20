@@ -18,17 +18,17 @@ class GroupsTableSeeder extends Seeder
             
             [
                "label" => "Admin",
-               "group_id" => 1,
+               "group_id" => -1,
                'desc' => 'This is the super Admin group',
                "permissions" => json_encode([""]),
             ],[
                "label" => "Member",
-               "group_id" => 2,
+               "group_id" => -1,
                'desc' => 'This an employees group',
                "permissions" => json_encode([""]),
             ],[
                "label" => "Vendor",
-               "group_id" => 3,
+               "group_id" => -1,
                'desc' => 'This an external Vendor',
                "permissions" => json_encode([""]),
             ]

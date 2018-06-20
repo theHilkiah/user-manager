@@ -32,7 +32,8 @@
         <table class="table data-table">
         <thead class="thead-dark">
             <tr>
-                <th scope="col">Name</th>
+                <th scope="col">Group Name</th>
+                <th scope="col">Parent Group</th>
                 <th scope="col">Users</th>
                 <th scope="col">Permissions</th>
                 <th scope="col"></th>
@@ -42,8 +43,9 @@
             @foreach ($Groups as $group)
                <tr>
                    <td>{{ $group->label }}</td>
+                   <td>{{ $group->group->label ?? 'Original' }}</td>
                    <td>{{ $group->users->count() }}</td>
-                   <td>{{ implode(",", $group->permissions) }}</td>
+                   <td>{{ implode(",", $group->permissions ?? []) }}</td>
                    <td>
                        <a href="/admin/groups/{{ $group->id }}/edit" class="badge badge-primary">edit</a>
                    </td>

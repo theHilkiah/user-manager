@@ -80,17 +80,7 @@ display: inline-block;
           </div>
           <div class="col">
             <p>CURRENT NOTES</p>
-            @if($Notes->count())
-                @foreach ($Notes->sortByDesc('created_at') as $note)
-                <blockquote class="blockquote">
-                  <strong>{{ $note->title }}</strong> - <small>{{$note->type}}</small>
-                  <p class="mb-0 truncate w-sm" data-toggle="tooltip" data-trigger="hover" data-title="{!! $note->content !!}">{!! $note->content !!}</p>
-                  <footer class="blockquote-footer"><cite title="Source Title">{{ $note->signature }}</cite></footer>
-                </blockquote>
-                @endforeach
-            @else
-              - There are no notes on {{$User->name}} currently
-            @endif
+           @include('users::users.show.notes')
           </div>
         </div>
       </div>
@@ -110,31 +100,7 @@ display: inline-block;
         <div class="row">
           <div class="col">
             <p class="text-center py-2 border-top">UPLOADED FILES</p>
-            @if($User->media->count())
-              <table class="table data-table">
-                <thead>
-                  <tr>
-                    <td>Preview</td>
-                    <td>File Path/Title</td>
-                  </tr>
-                </thead>
-                <tbody>
-                  @foreach ($User->media->sortByDesc('created_at') as $mda)
-                  @php $file = '<img class="img-thumbnail" '. $mda->preview .'>'; @endphp
-                  <tr>
-                    <td>
-                      <a href="#file-{{ $mda->id }}" data-toggle="popover" data-html="true" data-trigger="hover" data-content="{{ $file }}">
-                        <img class="img-thumb-128" {!! $mda->preview !!}>
-                      </a>
-                    </td>
-                    <td>{{$mda->file}}{{$mda->title}}</td>
-                  </tr>
-                @endforeach
-                </tbody>
-              </table>
-            @else
-              - There are no files uploaded for {{$User->name}} currently
-            @endif
+            @include('users::users.show.media')
           </div>
         </div>
       </div>

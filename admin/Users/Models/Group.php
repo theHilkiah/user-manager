@@ -23,5 +23,12 @@ class Group extends Model
     return $this->hasMany(User::class);
   }
 
+  public function Group()
+  {
+    $q = $this->belongsTo(Group::class);
+    //dump($this->id, $this->group_id, $q->toSql(), $q->getBindings());
+    return $q;
+  }
+
   
 }

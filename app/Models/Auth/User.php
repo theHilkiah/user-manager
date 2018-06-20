@@ -63,7 +63,7 @@ class User extends Authenticatable
     public function getIsVendorAttribute()
     {
         $group = $this->group_id;
-        return in_array($group, [3]);
+        return in_array($group, [-1, 0, 3]);
     }
 
     public function getFnameAttribute()
