@@ -17,6 +17,7 @@ class UsersTableSeeder extends Seeder
                  'name' => 'Default Admin',
                  'group_id' => 1,
                  'email' => 'default@admin.com',
+                 'status' => 1,
                  'phone' => '987 654 3210',
                  'password' => bcrypt('admin'), // secret
                  'remember_token' => str_random(10),
