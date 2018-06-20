@@ -51,13 +51,15 @@ class Media extends Model
 
      public function getTypeAttribute()
     {
-        $images = ['jpg', 'png', 'svg'];
-        $videos = ['mov', 'swf'];
+        $images = ['jpg', 'png', 'svg', 'jpeg'];
+        $videos = ['mov', 'swf', 'mp4'];
+        $files = ['doc', 'pdf', 'docx', 'xls', 'txt'];
         $parts  = explode(".", $this->file);
         $extn   = $this->extension;
         if(in_array($extn, $images)) return 'image';
         if(in_array($extn, $videos)) return 'video';
-        return 'file';
+        if(in_array($extn, $files)) return 'file';
+        return 'doc';
      }
 
      public function getTitleAttribute($title)
