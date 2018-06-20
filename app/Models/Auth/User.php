@@ -57,7 +57,7 @@ class User extends Authenticatable
     public function getIsMemberAttribute()
     {
         $group = $this->group_id;
-        return in_array($group, [2]);
+        return in_array($group, [1, 2]);
     }
 
     public function getIsVendorAttribute()

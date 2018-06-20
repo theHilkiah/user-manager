@@ -33,7 +33,7 @@
              <a class="btn btn-sm btn-outline-info" href="/user/uploads">enter</a>
          </div>
      </div>
-     @if ($User->group_id == 2)
+     @if ($User->isMember)
          <div class="card  border-primary text-primary">
          <div class="card-header">Widget #2</div>
          <div class="card-body"> ... </div>
@@ -47,11 +47,11 @@
      @endif
      <div class="card  border-primary text-primary">
          <div class="card-header">Messages</div>
-         <div class="card-body"> 
+         <div class="card-body">
              @php $Notes = $User->notes()->where('type', 2)->get(); @endphp
              @if ($Notes && ($count = $Notes->count()))
              <a href="#messagesBox" data-toggle="modal">
-                 {{ $count }} 
+                 {{ $count }}
              </a>
              <div class="modal fade" id="messagesBox" tabindex="-1" role="dialog" aria-labelledby="messagesBoxLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -79,10 +79,10 @@
             </div>
             </div>
             @else
-              No messages                 
+              No messages
              @endif
-        </div>           
-         
+        </div>
+
          <div class="card-footer"></div>
      </div>
      <form class="card  border-primary text-primary" action="{{url()->current()}}" method="get">
