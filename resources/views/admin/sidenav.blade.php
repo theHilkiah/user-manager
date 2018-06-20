@@ -32,7 +32,7 @@ $activeLink = function($link, $class = 'active'){
   </li>
   @endif
 </ul>
-@can('view-modules', Modules\Account\Models::class)
+@can('view-modules', Auth::user())
 <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
   <span>CONTENT</span>
   <a class="d-flex align-items-center text-muted" href="#">
@@ -40,6 +40,7 @@ $activeLink = function($link, $class = 'active'){
   </a>
 </h6>
 <ul class="nav flex-column mb-2">
+  @can('do', Auth::user())
   <li class="nav-item">
     <a class="nav-link{{$activeLink($link = 'admin/pages')}}" href="/{{ $link }}">
       <span data-feather="file-text"></span>
@@ -52,6 +53,7 @@ $activeLink = function($link, $class = 'active'){
       Blocks
     </a>
   </li>
+  @endcan
   <li class="nav-item">
     <a class="nav-link{{$activeLink($link = 'admin/media')}}" href="/{{ $link }}">
       <span data-feather="file-text"></span>
@@ -60,7 +62,7 @@ $activeLink = function($link, $class = 'active'){
   </li>
 </ul>
 @endcan
-@can('view-modules', Modules\Account\Models::class)
+@can('update-models', Auth::user())
 <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
   <span>MODULES</span>
   <a class="d-flex align-items-center text-muted" href="#">

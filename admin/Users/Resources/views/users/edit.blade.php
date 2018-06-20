@@ -106,21 +106,36 @@ display: inline-block;
       <div class="card-body">
         <div class="row">
           <div class="col">
-            <p class="mt-3">
-              Upload files for {{$User->fname}}
+            <p class="px-3 text-center">
+              <a href="#add-user-files" class="btn btn-sm btn-info" data-toggle="collapse">Upload files for {{$User->fname}}</a>
             </p>
-            @include('users::users.create.media')
+            <div class="collapse" id="add-user-files">
+              @include('users::users.create.media')
+            </div>
           </div>
+        </div>
+        <div class="row">
           <div class="col">
-            <p>UPLOADED FILES</p>
+            <p class="text-center py-2 border-top">UPLOADED FILES</p>
             @if($User->media->count())
-              <table class="table">
-                @foreach ($User->media->sortByDesc('created_at') as $mda)
-                  <tr class="border-bottom">
-                    <td><img class="img-thumb-64" {!!$mda->preview!!}></td>
-                    <td>{{$mda->file}}<br/>{{$mda->title}}</td>
+              <table class="table data-table">
+                <thead>
+                  <tr>
+                    <td>Preview</td>
+                    <td>File Path/Title</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  @foreach ($User->media->sortByDesc('created_at') as $mda)
+                  @php $file = '<img class="img-thumb-128" '.$mda->preview .'>'; @endphp
+                  <tr>
+                    <td>
+                      <a href="#file-{{ $mda->id }}" data-toggle="popover" data-html="true" data-trigger="hover" data-content="{{ $file }}">{{ $mda->title }}</a>
+                    </td>
+                    <td>{{$mda->file}}{{$mda->title}}</td>
                   </tr>
                 @endforeach
+                </tbody>
               </table>
             @else
               - There are no files uploaded for {{$User->name}} currently

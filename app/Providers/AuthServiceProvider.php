@@ -36,5 +36,12 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('edit-settings', function ($user) {
             return $user->group_id > 0 && $user->group_id <= 2;
         });
+        
+        Gate::define('do', function ($user, $action) {
+            // dump($action, $user);
+            // return $user->group_id > 0 && $user->group_id <= 2;
+            return false;
+        });
+
     }
 }
