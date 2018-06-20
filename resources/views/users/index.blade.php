@@ -33,7 +33,8 @@
              <a class="btn btn-sm btn-outline-info" href="/user/uploads">enter</a>
          </div>
      </div>
-     <div class="card  border-primary text-primary">
+     @if ($User->group_id == 2)
+         <div class="card  border-primary text-primary">
          <div class="card-header">Widget #2</div>
          <div class="card-body"> ... </div>
          <div class="card-footer"></div>
@@ -43,9 +44,43 @@
          <div class="card-body"> ... </div>
          <div class="card-footer"></div>
      </div>
+     @endif
      <div class="card  border-primary text-primary">
          <div class="card-header">Messages</div>
-         <div class="card-body"> {{$User->notes->count(['type' => '1'])}} </div>
+         <div class="card-body"> 
+             @php $Notes = $User->notes->where('type', 2)->where('user_id', auth()->id()); @endphp
+             @if ($Notes && ($count = $Notes->count()))
+             <a href="#messagesBox" data-toggle="modal">
+                 {{ $count }} 
+             </a>
+             <div class="modal fade" id="messagesBox" tabindex="-1" role="dialog" aria-labelledby="messagesBoxLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="messagesBoxLabel">Modal title</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <ul>
+                        @foreach ($Notes as $note)
+                        <li class="list-group-item">{{ $note->label }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+                </div>
+            </div>
+            </div>
+            @else
+              No messages                 
+             @endif
+        </div>           
+         
          <div class="card-footer"></div>
      </div>
      <form class="card  border-primary text-primary" action="{{url()->current()}}" method="get">
