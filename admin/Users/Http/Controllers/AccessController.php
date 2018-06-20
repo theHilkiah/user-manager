@@ -35,6 +35,8 @@ class AccessController extends Controller
      */
     public function store(Request $request)
     {
+        $Access = Access::create($request->input());
+        return back()->withSuccess('You have successfully added a new permission');
     }
 
     /**

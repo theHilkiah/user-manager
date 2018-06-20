@@ -1,7 +1,7 @@
 @extends('users::layouts.master')
 
 @section('content')
-    <div class="text-center">
+    <div class="">
       <h1 class="h3">Access & Permissions <button class="btn btn-info btn-sm float-right" type="submit" data-toggle="modal" data-target="#addNew">Add New</button></h1>
       <hr>
       <div id="addNew" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="addNewLabel" aria-hidden="true">
@@ -27,7 +27,7 @@
         <table class="table data-table">
         <thead class="thead-dark">
             <tr>
-                <th scope="col">Name</th>
+                <th scope="col">Label</th>
                 <th scope="col"></th>
             </tr>
         </thead>
@@ -35,8 +35,8 @@
             @foreach ($Permissions as $access)
                <tr>
                    <td>{{ $access->label }}</td>
-                   <td>
-                       <a href="/admin/access/{{ $access->id }}/edit" class="btn btn-sm btn-outline-info">edit</a>
+                   <td class="text-right">
+                       <a href="/admin/access/{{ $access->id }}/edit" class="badge badge-info py-1 px-2">edit</a>
                    </td>
             </tr>
             @endforeach

@@ -31,6 +31,7 @@
                 <th scope="col">Group</th>
                 <th scope="col">Active</th>
                 <th scope="col">Verified</th>
+                <th scope="col">Status</th>
                 <th scope="col"></th>
             </tr>
         </thead>
@@ -44,6 +45,7 @@
                    <td>{{ $user->group->label ?? 'ungrouped' }}</td>
                    <td>{!! $user->active? '&#10003;': '&times;' !!}</td>
                    <td>{!! $user->verified? '&#10003;': '&times;' !!}</td>
+                   <td>{!! ['Pending', 'Approved', 'Suspended'][$user->status] !!}</td>
                    <td>
                        <a href="/admin/users/{{ $user->id }}/edit" class="badge badge-primary">edit</a>
                    </td>

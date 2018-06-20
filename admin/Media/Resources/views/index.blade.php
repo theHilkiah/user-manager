@@ -3,7 +3,7 @@
 @section('content')
     <div class="table-responsive">
         <table class="table data-table">
-            <thead>
+            <thead class="thead-dark">
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Preview</th>
@@ -20,7 +20,7 @@
                         <td>{{$mda->id}}</td>
                         <td>
                             <a href="#file-{{ $mda->id }}" data-toggle="popover" data-html="true" data-trigger="hover" data-content="{{ $file }}">
-                            <img class="img-thumb" {!!$mda->preview!!}>
+                            <img class="img-thumb-128" {!!$mda->preview!!}>
                             </a>
                         </td>
                         <td>{{$mda->file}}</td>
@@ -32,11 +32,12 @@
             </tbody>
         </table>
     </div>
+    @push('scripts')
+    <script>
+        $(document).ready(function(){
+            $('.data-table').DataTable();
+        });
+    </script>
+    @endpush
+
 @endsection
-@push('scripts')
-<script>
-    $(document).ready(function(){
-        $('.data-table').DataTable();
-    });
-</script>
-@endpush

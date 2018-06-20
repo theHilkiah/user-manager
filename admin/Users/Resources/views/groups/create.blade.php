@@ -3,7 +3,7 @@
     <div class="form-row">
         <div class="col">
             <label for="name">Group Name</label>
-            <input type="text" name="label" class="form-control">
+            <input type="text" name="label" class="form-control" value="{{ $label or old('label') }}">
         </div>
         <div class="col">
             <label for="name">Group Under:</label>
@@ -19,10 +19,16 @@
         <label for="permissions">Permissions</label>
         <select name="permissions[]" class="form-control select2" multiple="multiple">
             <option value="">(select one or more)</option>
+            @isset ($Permissions)
+                @foreach ($Permissions as $perm)
+                <option value="{{ $perm->id }}">{{ $perm->label }}</option>    
+                @endforeach
+            @endisset
+            {{--  <option value="">(select one or more)</option>
             <option value="1">Can write</option>
             <option value="2">Can edit</option>
             <option value="3">Can delete</option>
-            <option value="4">Can view</option>
+            <option value="4">Can view</option>  --}}
         </select>
     </div>
     <div class="form-row">

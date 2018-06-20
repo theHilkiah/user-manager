@@ -18,14 +18,14 @@ $activeLink = function($link, $class = 'active'){
     </a>
   </li>
   <li class="nav-item">
-    <a class="nav-link{{$activeLink($link = 'admin/system/updates')}}" href="/{{ $link }}">
+    <a class="nav-link{{$activeLink($link = 'admin/system/updates')}}" href="#">
       <span data-feather="file-text"></span>
       Updates <span class="badge badge-primary float-right">5</span>
     </a>
   </li>
   @if(($upgrades = request('upgrades')))
   <li class="nav-item">
-    <a class="nav-link{{$activeLink($link = 'admin/system/upgrades')}}" href="/{{ $link }}">
+    <a class="nav-link{{$activeLink($link = 'admin/system/upgrades')}}" href="#">
       <span data-feather="file-text"></span>
       Upgrades <span class="badge badge-primary float-right">{{$upgrades}}</span>
     </a>
@@ -101,7 +101,8 @@ $activeLink = function($link, $class = 'active'){
   <li class="nav-item">
       <a class="nav-link{{$activeLink($link = 'admin/users')}}" href="/{{ $link }}" href="/{{ $link }}">
         <span data-feather="users"></span>
-        Users
+        @php $Users = App\Models\Auth\User::where('status', 0)->get(); @endphp
+        Users <span class="badge badge-primary float-right">{{ $Users->count() }}</span>
       </a>
     </li>
 

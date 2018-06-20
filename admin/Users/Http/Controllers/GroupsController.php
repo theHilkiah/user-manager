@@ -26,7 +26,7 @@ class GroupsController extends Controller
      */
     public function create()
     {
-        return view('users::create');
+        return view('users::groups.create');
     }
 
     /**
@@ -46,16 +46,18 @@ class GroupsController extends Controller
      */
     public function show()
     {
-        return view('users::show');
+        return view('users::groups.show');
     }
 
     /**
      * Show the form for editing the specified resource.
      * @return Response
      */
-    public function edit()
+    public function edit($id)
     {
-        return view('users::edit');
+        $data['Groups'] = $Group = Group::all();
+        $data['Group'] = $Group->find($id);
+        return view('users::groups.edit', $data);
     }
 
     /**

@@ -33,6 +33,8 @@
         <thead class="thead-dark">
             <tr>
                 <th scope="col">Name</th>
+                <th scope="col">Users</th>
+                <th scope="col">Permissions</th>
                 <th scope="col"></th>
             </tr>
         </thead>
@@ -40,6 +42,8 @@
             @foreach ($Groups as $group)
                <tr>
                    <td>{{ $group->label }}</td>
+                   <td>{{ $group->users->count() }}</td>
+                   <td>{{ implode(",", $group->permissions) }}</td>
                    <td>
                        <a href="/admin/groups/{{ $group->id }}/edit" class="badge badge-primary">edit</a>
                    </td>

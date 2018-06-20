@@ -17,7 +17,9 @@ class CreateAccessesTable extends Migration
             $table->increments('id');
             $table->string('label')->nulable();
             $table->string('title')->nulable();
-            $table->text('content')->nulable();
+            $table->string('code')->nulable();
+            $table->string('score')->nulable();
+            $table->text('desc')->nulable();
             $table->timestamps();
         });
     }

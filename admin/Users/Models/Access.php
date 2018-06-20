@@ -9,6 +9,8 @@ class Access extends Model
    protected $fillable = [
       "label",
       "title",
-      "content",
+      'score',
+      'code',
+      "desc",
    ];
 }

@@ -15,6 +15,7 @@
             <label class="inline-label" for="name">Phone</label>
             <input class="form-control" type="tel" name="phone" value="{{ $phone ?? old('phone') }}">
         </div>
+        <hr class="row">
         <div class="form-group">
             <label class="inline-label" for="name">Group</label>
             <select name="group_id" class="form-control">
@@ -25,6 +26,18 @@
                 @endforeach
             </select>
         </div>
+
+        <div class="form-group">
+            <label class="inline-label" for="name">Status</label>
+            <select name="status" class="form-control" required>
+                <option value="">(Select Status)</option>
+                @foreach (['pending', 'approved', 'suspended'] as $key => $status)
+                    @php $selected = (@$group->status == @$status)? ' selected': ''; @endphp
+                    <option value="{{$key}}"{{$selected}}>{{ ucwords($status)}}</option>
+                @endforeach
+            </select>
+        </div>
+
         <div class="form-row">
             <div class="col">
 

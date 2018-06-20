@@ -3,6 +3,7 @@
 namespace Admin\Users\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Auth\User;
 
 class Group extends Model
 {
@@ -16,4 +17,11 @@ class Group extends Model
    protected $casts = [
      "permissions" => "array"
   ];
+
+  public function Users()
+  {
+    return $this->hasMany(User::class);
+  }
+
+  
 }
